@@ -18,11 +18,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
     }
     
     @IBAction private func goTo(_ sender: UIButton) {
         findZhdun()
-        addMarker()
+        addZhdun()
     }
     
     private func findZhdun() {
@@ -30,7 +31,7 @@ class ViewController: UIViewController {
         mapView.camera = camera
     }
     
-    private func addMarker() {
+    private func addZhdun() {
         marker = GMSMarker(position: zhdunCoordinate)
         
         marker?.icon = UIImage(named: "zhdun-icon")
@@ -41,3 +42,9 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        let marker = GMSMarker(position: coordinate)
+        marker.map = mapView
+    }
+}
