@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class ViewController: UIViewController {
+    
+    @IBOutlet private var mapView: GMSMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
