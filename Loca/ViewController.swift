@@ -13,8 +13,9 @@ class ViewController: UIViewController {
     // 'Zhdun' (Homunculus Loxodontus) 52.1662, 4.4784
     private let zhdunCoordinate = CLLocationCoordinate2D(latitude: 52.1662, longitude: 4.4784)
     private var marker: GMSMarker?
+    private var geoCoder: CLGeocoder?
     
-    @IBOutlet private var mapView: GMSMapView!
+    @IBOutlet weak var mapView: GMSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,5 +59,14 @@ extension ViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         let marker = GMSMarker(position: coordinate)
         marker.map = mapView
+        
+        if geoCoder == nil {
+            geoCoder = CLGeocoder()
+        }
+        
+        geoCoder?.reverseGeocodeLocation(.init(latitude: coordinate.latitude, longitude: coordinate.longitude),
+                                         completionHandler: { places, error in
+            print(places?.last)
+        })
     }
 }
