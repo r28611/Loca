@@ -56,7 +56,6 @@
 				7D19F1AF173B0070FB56693F /* Pods-Loca.debug.xcconfig */,
 				ACE16BF64FA0492E52DA5D40 /* Pods-Loca.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -360,6 +359,7 @@
 				DEVELOPMENT_TEAM = 93LWHTP5BH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Loca/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please enable";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -389,6 +389,7 @@
 				DEVELOPMENT_TEAM = 93LWHTP5BH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Loca/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please enable";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

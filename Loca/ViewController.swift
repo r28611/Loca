@@ -14,12 +14,14 @@ class ViewController: UIViewController {
     private let zhdunCoordinate = CLLocationCoordinate2D(latitude: 52.1662, longitude: 4.4784)
     private var marker: GMSMarker?
     private var geoCoder: CLGeocoder?
+    private var locationManager: CLLocationManager?
     
     @IBOutlet weak var mapView: GMSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        configureLocationManager()
     }
     
     @IBAction private func goTo(_ sender: UIButton) {
@@ -53,6 +55,16 @@ class ViewController: UIViewController {
         marker?.map = nil
         marker = nil
     }
+    
+    private func configureLocationManager() {
+        if locationManager == nil {
+            locationManager = CLLocationManager()
+        }
+        locationManager?.delegate = self
+        
+        locationManager?.requestAlwaysAuthorization()
+        locationManager?.allowsBackgroundLocationUpdates = true
+    }
 }
 
 extension ViewController: GMSMapViewDelegate {
@@ -69,4 +81,8 @@ extension ViewController: GMSMapViewDelegate {
             print(places?.last)
         })
     }
+}
+
+extension ViewController: CLLocationManagerDelegate {
+    
 }
