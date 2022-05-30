@@ -11,7 +11,7 @@ import GoogleMaps
 class ViewController: UIViewController {
     
     // 'Zhdun' (Homunculus Loxodontus) 52.1662, 4.4784
-    private let zhdunCoordinate = CLLocationCoordinate2D(latitude: 52.1662, longitude: 4.4784)
+    private let zhdunCoordinate = CLLocationCoordinate2D(latitude: 52.16767867509046, longitude: 4.478252575153958)
     private var marker: GMSMarker?
     private var geoCoder: CLGeocoder?
     private var locationManager: CLLocationManager?
@@ -20,8 +20,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.delegate = self
+        configureMap()
         configureLocationManager()
+    }
+    
+    func configureMap() {
+        let camera = GMSCameraPosition.camera(withTarget: zhdunCoordinate, zoom: 12)
+        mapView.camera = camera
+        mapView.isMyLocationEnabled = true
+        
+        mapView.delegate = self
     }
     
     @IBAction private func goTo(_ sender: UIButton) {
@@ -37,7 +45,7 @@ class ViewController: UIViewController {
     private func findZhdun() {
         mapView.animate(to: GMSCameraPosition(latitude: zhdunCoordinate.latitude,
                                               longitude: zhdunCoordinate.longitude,
-                                              zoom: 10))
+                                              zoom: 15))
     }
     
     private func addZhdun() {
