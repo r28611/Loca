@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     private var marker: GMSMarker?
     private var geoCoder: CLGeocoder?
     private var locationManager: CLLocationManager?
+    private var route: GMSPolyline?
+    private var routePath: GMSMutablePath?
     
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -40,6 +42,15 @@ class ViewController: UIViewController {
         } else {
             removeMarker()
         }
+    }
+    
+    @IBAction private func updateLocation(_ sender: UIBarButtonItem) {
+        route?.map = nil
+        route = GMSPolyline()
+        routePath = GMSMutablePath()
+        route?.map = mapView
+        
+        locationManager?.startUpdatingLocation()
     }
     
     private func findZhdun() {
@@ -70,7 +81,7 @@ class ViewController: UIViewController {
         }
         locationManager?.delegate = self
         
-        locationManager?.requestAlwaysAuthorization()
+        locationManager?.requestWhenInUseAuthorization()
         locationManager?.allowsBackgroundLocationUpdates = true
     }
 }
@@ -92,5 +103,21 @@ extension ViewController: GMSMapViewDelegate {
 }
 
 extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager,
+                         didUpdateLocations locations: [CLLocation]) {
+        
+        guard let location = locations.last else { return }
+        
+        routePath?.add(location.coordinate)
+        route?.path = routePath
+        
+        let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
+        mapView.animate(to: position)
+        
+        print(location.coordinate)
+    }
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
 }
