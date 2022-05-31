@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     private var locationManager: CLLocationManager?
     private var route: GMSPolyline?
     private var routePath: GMSMutablePath?
+    private var markersQueue = Queue<GMSMarker>(limit: 2)
     
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -101,6 +102,11 @@ extension ViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         let marker = GMSMarker(position: coordinate)
         marker.map = mapView
+        
+        if markersQueue.isFull {
+            markersQueue.dequeue()?.map = nil
+        }
+        markersQueue.enqueue(marker)
         
         if geoCoder == nil {
             geoCoder = CLGeocoder()
