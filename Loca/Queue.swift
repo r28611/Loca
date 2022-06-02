@@ -9,7 +9,7 @@ import Foundation
 
 struct Queue<T> {
     typealias Element = T
-    private var elements: [T] = []
+    var elements: [T] = []
     private let limit: Int
     
     init(limit: Int) {

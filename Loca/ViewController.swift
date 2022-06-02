@@ -102,7 +102,8 @@ class ViewController: UIViewController {
     
     func drawPolyline() {
         
-        let coordinates = geoJson.map({CLLocationCoordinate2D(latitude: $0.last!, longitude: $0.first!)})
+        guard markersQueue.isFull else { return }
+        let coordinates = markersQueue.elements.map({$0.position})
         
         let chunkSize = 3
         let chunkedCoordinates = coordinates.chunked(into: chunkSize)
@@ -132,7 +133,7 @@ class ViewController: UIViewController {
         polyline.map = self.mapView
         
         let bounds = GMSCoordinateBounds(path: path)
-        self.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 50.0))
+        self.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 150.0))
     }
 }
 
