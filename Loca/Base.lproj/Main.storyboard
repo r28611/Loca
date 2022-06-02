@@ -41,6 +41,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="in2-9X-zh9">
+                        <barButtonItem key="leftBarButtonItem" title="Route" id="nsm-L5-CTv">
+                            <connections>
+                                <action selector="routeDidTapped" destination="BYZ-38-t0r" id="zhb-zx-e3r"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Update location" id="vP8-wZ-db0">
                             <connections>
                                 <action selector="updateLocation:" destination="BYZ-38-t0r" id="ie2-ua-H5j"/>
