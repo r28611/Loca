@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B67847FF9F4F9748905D00B /* Pods_Loca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6595262673E44A5B14ACF82 /* Pods_Loca.framework */; };
+		85F9DA7D87202CD65E33937E /* Pods_Loca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52EFB4E5A77D03716F401341 /* Pods_Loca.framework */; };
 		AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCA283E8E240036575F /* AppDelegate.swift */; };
 		AB9CFFCD283E8E240036575F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCC283E8E240036575F /* SceneDelegate.swift */; };
 		AB9CFFCF283E8E240036575F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCE283E8E240036575F /* ViewController.swift */; };
 		AB9CFFD2283E8E240036575F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB9CFFD0283E8E240036575F /* Main.storyboard */; };
 		AB9CFFD4283E8E270036575F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9CFFD3283E8E270036575F /* Assets.xcassets */; };
 		AB9CFFD7283E8E270036575F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB9CFFD5283E8E270036575F /* LaunchScreen.storyboard */; };
+		ABEDA64A28458DAE00DDC902 /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = ABEDA64928458DAE00DDC902 /* style.json */; };
+		ABEDA64C284671AB00DDC902 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDA64B284671AB00DDC902 /* Queue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2A5ECC320C48B68A7044D009 /* Pods-Loca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loca.release.xcconfig"; path = "Target Support Files/Pods-Loca/Pods-Loca.release.xcconfig"; sourceTree = "<group>"; };
-		4177A559A744808D161BEF39 /* Pods-Loca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loca.debug.xcconfig"; path = "Target Support Files/Pods-Loca/Pods-Loca.debug.xcconfig"; sourceTree = "<group>"; };
+		52EFB4E5A77D03716F401341 /* Pods_Loca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Loca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D19F1AF173B0070FB56693F /* Pods-Loca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loca.debug.xcconfig"; path = "Target Support Files/Pods-Loca/Pods-Loca.debug.xcconfig"; sourceTree = "<group>"; };
 		AB9CFFC7283E8E240036575F /* Loca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9CFFCA283E8E240036575F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB9CFFCC283E8E240036575F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,7 +29,9 @@
 		AB9CFFD3283E8E270036575F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB9CFFD6283E8E270036575F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB9CFFD8283E8E270036575F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D6595262673E44A5B14ACF82 /* Pods_Loca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Loca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABEDA64928458DAE00DDC902 /* style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
+		ABEDA64B284671AB00DDC902 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		ACE16BF64FA0492E52DA5D40 /* Pods-Loca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loca.release.xcconfig"; path = "Target Support Files/Pods-Loca/Pods-Loca.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,29 +39,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B67847FF9F4F9748905D00B /* Pods_Loca.framework in Frameworks */,
+				85F9DA7D87202CD65E33937E /* Pods_Loca.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5AE07A2747273849C5458395 /* Pods */ = {
+		46C4BA0E70EE53E8CA21887D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4177A559A744808D161BEF39 /* Pods-Loca.debug.xcconfig */,
-				2A5ECC320C48B68A7044D009 /* Pods-Loca.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		5C9EA4FCB1ADF8CA917F0C69 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D6595262673E44A5B14ACF82 /* Pods_Loca.framework */,
+				52EFB4E5A77D03716F401341 /* Pods_Loca.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		60903889E40945752CF15509 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D19F1AF173B0070FB56693F /* Pods-Loca.debug.xcconfig */,
+				ACE16BF64FA0492E52DA5D40 /* Pods-Loca.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		AB9CFFBE283E8E240036575F = {
@@ -65,8 +68,8 @@
 			children = (
 				AB9CFFC9283E8E240036575F /* Loca */,
 				AB9CFFC8283E8E240036575F /* Products */,
-				5AE07A2747273849C5458395 /* Pods */,
-				5C9EA4FCB1ADF8CA917F0C69 /* Frameworks */,
+				60903889E40945752CF15509 /* Pods */,
+				46C4BA0E70EE53E8CA21887D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +87,8 @@
 				AB9CFFCA283E8E240036575F /* AppDelegate.swift */,
 				AB9CFFCC283E8E240036575F /* SceneDelegate.swift */,
 				AB9CFFCE283E8E240036575F /* ViewController.swift */,
+				ABEDA64B284671AB00DDC902 /* Queue.swift */,
+				ABEDA64928458DAE00DDC902 /* style.json */,
 				AB9CFFD0283E8E240036575F /* Main.storyboard */,
 				AB9CFFD3283E8E270036575F /* Assets.xcassets */,
 				AB9CFFD5283E8E270036575F /* LaunchScreen.storyboard */,
@@ -99,11 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB9CFFDB283E8E270036575F /* Build configuration list for PBXNativeTarget "Loca" */;
 			buildPhases = (
-				983307AFB8B17A70A15D48D6 /* [CP] Check Pods Manifest.lock */,
+				36815D0B1E53F60B18BA5FF9 /* [CP] Check Pods Manifest.lock */,
 				AB9CFFC3283E8E240036575F /* Sources */,
 				AB9CFFC4283E8E240036575F /* Frameworks */,
 				AB9CFFC5283E8E240036575F /* Resources */,
-				03F0593DB2237C1B39BFF576 /* [CP] Copy Pods Resources */,
+				FD0CCAB026EB7FA89D0414A4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -154,6 +159,7 @@
 			files = (
 				AB9CFFD7283E8E270036575F /* LaunchScreen.storyboard in Resources */,
 				AB9CFFD4283E8E270036575F /* Assets.xcassets in Resources */,
+				ABEDA64A28458DAE00DDC902 /* style.json in Resources */,
 				AB9CFFD2283E8E240036575F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,24 +167,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		03F0593DB2237C1B39BFF576 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Loca/Pods-Loca-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Loca/Pods-Loca-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Loca/Pods-Loca-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		983307AFB8B17A70A15D48D6 /* [CP] Check Pods Manifest.lock */ = {
+		36815D0B1E53F60B18BA5FF9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -200,6 +189,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FD0CCAB026EB7FA89D0414A4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Loca/Pods-Loca-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Loca/Pods-Loca-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Loca/Pods-Loca-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -210,6 +216,7 @@
 				AB9CFFCF283E8E240036575F /* ViewController.swift in Sources */,
 				AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */,
 				AB9CFFCD283E8E240036575F /* SceneDelegate.swift in Sources */,
+				ABEDA64C284671AB00DDC902 /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +358,7 @@
 		};
 		AB9CFFDC283E8E270036575F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4177A559A744808D161BEF39 /* Pods-Loca.debug.xcconfig */;
+			baseConfigurationReference = 7D19F1AF173B0070FB56693F /* Pods-Loca.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -360,6 +367,7 @@
 				DEVELOPMENT_TEAM = 93LWHTP5BH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Loca/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please enable";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -380,7 +388,7 @@
 		};
 		AB9CFFDD283E8E270036575F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A5ECC320C48B68A7044D009 /* Pods-Loca.release.xcconfig */;
+			baseConfigurationReference = ACE16BF64FA0492E52DA5D40 /* Pods-Loca.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -389,6 +397,7 @@
 				DEVELOPMENT_TEAM = 93LWHTP5BH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Loca/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please enable";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
