@@ -18,6 +18,10 @@ class ViewController: UIViewController {
     private var route: GMSPolyline?
     private var routePath: GMSMutablePath?
     private var markersQueue = Queue<GMSMarker>(limit: 2)
+    private var timer: Timer?
+    private var startTime: Date?
+    private let timeInterval: TimeInterval = 180
+    private var beginBackgroundTask: UIBackgroundTaskIdentifier?
     
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -25,6 +29,35 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         configureMap()
         configureLocationManager()
+        configureTimer()
+    }
+    
+    func configureTimer() {
+        beginBackgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+            guard let strongSelf = self else { return }
+            UIApplication.shared.endBackgroundTask(strongSelf.beginBackgroundTask!)
+            strongSelf.beginBackgroundTask = UIBackgroundTaskIdentifier.invalid
+        }
+        startTime = Date()
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+
+            print(Date())
+            
+            guard
+                let startTime = self?.startTime,
+                let timeInterval = self?.timeInterval,
+                let beginBackgroundTask = self?.beginBackgroundTask
+            else { return }
+            
+            let leftSeconds = Date().timeIntervalSince1970 - startTime.timeIntervalSince1970
+            
+            if leftSeconds >= timeInterval {
+                self?.timer?.invalidate()
+                self?.timer = nil
+                
+                UIApplication.shared.endBackgroundTask(beginBackgroundTask)
+                self?.beginBackgroundTask = UIBackgroundTaskIdentifier.invalid }
+        }
     }
     
     func configureMap() {
