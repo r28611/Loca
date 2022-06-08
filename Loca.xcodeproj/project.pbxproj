@@ -77,6 +77,16 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		AB3AC32628512CC6003FFAAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB9CFFCE283E8E240036575F /* ViewController.swift */,
+				AB9CFFD0283E8E240036575F /* Main.storyboard */,
+				AB9CFFD5283E8E270036575F /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		AB9CFFBE283E8E240036575F = {
 			isa = PBXGroup;
 			children = (
@@ -100,11 +110,9 @@
 			children = (
 				AB9CFFCA283E8E240036575F /* AppDelegate.swift */,
 				AB9CFFCC283E8E240036575F /* SceneDelegate.swift */,
-				AB9CFFCE283E8E240036575F /* ViewController.swift */,
+				AB3AC32628512CC6003FFAAB /* View */,
 				AB3AC32128511F49003FFAAB /* MapViewModel.swift */,
-				AB9CFFD0283E8E240036575F /* Main.storyboard */,
 				AB9CFFD3283E8E270036575F /* Assets.xcassets */,
-				AB9CFFD5283E8E270036575F /* LaunchScreen.storyboard */,
 				AB9CFFD8283E8E270036575F /* Info.plist */,
 				AB3AC3252851293C003FFAAB /* Utility */,
 			);

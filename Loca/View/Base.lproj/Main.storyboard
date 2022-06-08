@@ -35,13 +35,20 @@
                             <barButtonItem title="Item" image="record.circle" catalog="system" id="vP8-wZ-db0">
                                 <color key="tintColor" red="0.75706166029999999" green="0.0" blue="0.642088294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <action selector="updateLocation:" destination="BYZ-38-t0r" id="ie2-ua-H5j"/>
+                                    <action selector="startTrackDidTapped:" destination="BYZ-38-t0r" id="b6d-KW-ljQ"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="stop" id="yRb-Rv-mvi">
-                                <color key="tintColor" red="0.0" green="0.45351827140000001" blue="0.56644111870000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="systemTealColor"/>
+                                <connections>
+                                    <action selector="stopTrackDidTapped:" destination="BYZ-38-t0r" id="aAQ-dk-jyt"/>
+                                </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="save" id="5Se-zQ-ZGr"/>
+                            <barButtonItem systemItem="save" id="5Se-zQ-ZGr">
+                                <connections>
+                                    <action selector="saveTrackDidTapped:" destination="BYZ-38-t0r" id="RSH-Nt-5HP"/>
+                                </connections>
+                            </barButtonItem>
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="Get route" id="nsm-L5-CTv">
                             <connections>
@@ -80,6 +87,9 @@
         <image name="record.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -10,8 +10,6 @@ import GoogleMaps
 
 class ViewController: UIViewController {
     
-    private var route: GMSPolyline?
-    private var routePath: GMSMutablePath?
     private var beginBackgroundTask: UIBackgroundTaskIdentifier?
     private var mapViewModel: MapViewModel?
     
@@ -28,8 +26,15 @@ class ViewController: UIViewController {
         mapViewModel?.drawPolyline()
     }
     
-    @IBAction private func updateLocation(_ sender: UIBarButtonItem) {
-        mapViewModel?.updateLocation()
+    @IBAction private func startTrackDidTapped(_ sender: UIBarButtonItem) {
+        mapViewModel?.startTracking()
     }
     
+    @IBAction private func stopTrackDidTapped(_ sender: UIBarButtonItem) {
+        mapViewModel?.stopTracking()
+    }
+    
+    @IBAction private func saveTrackDidTapped(_ sender: UIBarButtonItem) {
+        mapViewModel?.saveTrack()
+    }
 }
