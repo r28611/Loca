@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		85F9DA7D87202CD65E33937E /* Pods_Loca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52EFB4E5A77D03716F401341 /* Pods_Loca.framework */; };
 		AB3AC32228511F49003FFAAB /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AC32128511F49003FFAAB /* MapViewModel.swift */; };
+		AB3AC32428512910003FFAAB /* ChankedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AC32328512910003FFAAB /* ChankedArray.swift */; };
 		AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCA283E8E240036575F /* AppDelegate.swift */; };
 		AB9CFFCD283E8E240036575F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCC283E8E240036575F /* SceneDelegate.swift */; };
 		AB9CFFCF283E8E240036575F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCE283E8E240036575F /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 		52EFB4E5A77D03716F401341 /* Pods_Loca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Loca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D19F1AF173B0070FB56693F /* Pods-Loca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loca.debug.xcconfig"; path = "Target Support Files/Pods-Loca/Pods-Loca.debug.xcconfig"; sourceTree = "<group>"; };
 		AB3AC32128511F49003FFAAB /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		AB3AC32328512910003FFAAB /* ChankedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChankedArray.swift; sourceTree = "<group>"; };
 		AB9CFFC7283E8E240036575F /* Loca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9CFFCA283E8E240036575F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB9CFFCC283E8E240036575F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AB3AC3252851293C003FFAAB /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				ABEDA64B284671AB00DDC902 /* Queue.swift */,
+				ABEDA64928458DAE00DDC902 /* style.json */,
+				AB3AC32328512910003FFAAB /* ChankedArray.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		AB9CFFBE283E8E240036575F = {
 			isa = PBXGroup;
 			children = (
@@ -90,12 +102,11 @@
 				AB9CFFCC283E8E240036575F /* SceneDelegate.swift */,
 				AB9CFFCE283E8E240036575F /* ViewController.swift */,
 				AB3AC32128511F49003FFAAB /* MapViewModel.swift */,
-				ABEDA64B284671AB00DDC902 /* Queue.swift */,
-				ABEDA64928458DAE00DDC902 /* style.json */,
 				AB9CFFD0283E8E240036575F /* Main.storyboard */,
 				AB9CFFD3283E8E270036575F /* Assets.xcassets */,
 				AB9CFFD5283E8E270036575F /* LaunchScreen.storyboard */,
 				AB9CFFD8283E8E270036575F /* Info.plist */,
+				AB3AC3252851293C003FFAAB /* Utility */,
 			);
 			path = Loca;
 			sourceTree = "<group>";
@@ -216,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB3AC32428512910003FFAAB /* ChankedArray.swift in Sources */,
 				AB9CFFCF283E8E240036575F /* ViewController.swift in Sources */,
 				AB3AC32228511F49003FFAAB /* MapViewModel.swift in Sources */,
 				AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */,

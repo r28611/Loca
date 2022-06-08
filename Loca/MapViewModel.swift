@@ -11,7 +11,10 @@ import GoogleMaps
 final class MapViewModel: NSObject {
     let mapView: GMSMapView
     private var geoCoder: CLGeocoder?
+    private var locationManager: CLLocationManager?
     private var markersQueue: Queue<GMSMarker>
+    private var route: GMSPolyline?
+    private var routePath: GMSMutablePath?
     
     init(mapView: GMSMapView) {
         self.mapView = mapView
@@ -34,6 +37,19 @@ final class MapViewModel: NSObject {
         } catch {
             NSLog("One or more of the map styles failed to load. \(error)")
         }
+        
+        configureLocationManager()
+    }
+    
+    private func configureLocationManager() {
+        if locationManager == nil {
+            locationManager = CLLocationManager()
+        }
+        locationManager?.delegate = self
+        locationManager?.requestAlwaysAuthorization()
+        locationManager?.allowsBackgroundLocationUpdates = true
+        locationManager?.pausesLocationUpdatesAutomatically = false
+        locationManager?.startMonitoringSignificantLocationChanges()
     }
     
     func drawPolyline() {
@@ -71,6 +87,15 @@ final class MapViewModel: NSObject {
         let bounds = GMSCoordinateBounds(path: path)
         self.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 150.0))
     }
+    
+    func updateLocation() {
+        route?.map = nil
+        route = GMSPolyline()
+        routePath = GMSMutablePath()
+        route?.map = mapView
+        
+        locationManager?.startUpdatingLocation()
+    }
 }
 
 extension MapViewModel: GMSMapViewDelegate {
@@ -91,5 +116,23 @@ extension MapViewModel: GMSMapViewDelegate {
 //                                         completionHandler: { places, error in
 //            print(places?.last)
 //        })
+    }
+}
+
+extension MapViewModel: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager,
+                         didUpdateLocations locations: [CLLocation]) {
+        
+        guard let location = locations.last else { return }
+        
+        routePath?.add(location.coordinate)
+        route?.path = routePath
+        
+        let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
+        mapView.animate(to: position)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
 }
