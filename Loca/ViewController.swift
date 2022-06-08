@@ -18,9 +18,6 @@ class ViewController: UIViewController {
     private var route: GMSPolyline?
     private var routePath: GMSMutablePath?
     private var markersQueue = Queue<GMSMarker>(limit: 2)
-    private var timer: Timer?
-    private var startTime: Date?
-    private let timeInterval: TimeInterval = 180
     private var beginBackgroundTask: UIBackgroundTaskIdentifier?
     
     @IBOutlet weak var mapView: GMSMapView!
@@ -29,25 +26,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         configureMap()
         configureLocationManager()
-        configureTimer()
-    }
-    
-    func configureTimer() {
-        startTime = Date()
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            print(Date())
-        }
-        
-        NotificationCenter.default.addObserver(
-            forName: UIApplication.didEnterBackgroundNotification, object: nil,
-            queue: OperationQueue.main) { [weak self] _ in
-                self?.timer?.invalidate()
-                self?.timer = nil
-            }
-        NotificationCenter.default.addObserver(
-            forName: UIApplication.willEnterForegroundNotification, object: nil, queue: OperationQueue.main) { [weak self] _ in
-                self?.configureTimer()
-            }
     }
     
     func configureMap() {
@@ -118,9 +96,10 @@ class ViewController: UIViewController {
             locationManager = CLLocationManager()
         }
         locationManager?.delegate = self
-        
-        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.requestAlwaysAuthorization()
         locationManager?.allowsBackgroundLocationUpdates = true
+        locationManager?.pausesLocationUpdatesAutomatically = false
+        locationManager?.startMonitoringSignificantLocationChanges()
     }
     
     func drawPolyline() {
