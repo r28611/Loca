@@ -33,31 +33,21 @@ class ViewController: UIViewController {
     }
     
     func configureTimer() {
-        beginBackgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
-            guard let strongSelf = self else { return }
-            UIApplication.shared.endBackgroundTask(strongSelf.beginBackgroundTask!)
-            strongSelf.beginBackgroundTask = UIBackgroundTaskIdentifier.invalid
-        }
         startTime = Date()
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             print(Date())
-            
-            guard
-                let startTime = self?.startTime,
-                let timeInterval = self?.timeInterval,
-                let beginBackgroundTask = self?.beginBackgroundTask
-            else { return }
-            
-            let leftSeconds = Date().timeIntervalSince1970 - startTime.timeIntervalSince1970
-            
-            if leftSeconds >= timeInterval {
+        }
+        
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didEnterBackgroundNotification, object: nil,
+            queue: OperationQueue.main) { [weak self] _ in
                 self?.timer?.invalidate()
                 self?.timer = nil
-                
-                UIApplication.shared.endBackgroundTask(beginBackgroundTask)
-                self?.beginBackgroundTask = UIBackgroundTaskIdentifier.invalid }
-        }
+            }
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.willEnterForegroundNotification, object: nil, queue: OperationQueue.main) { [weak self] _ in
+                self?.configureTimer()
+            }
     }
     
     func configureMap() {
