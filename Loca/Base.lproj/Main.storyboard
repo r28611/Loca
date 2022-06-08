@@ -45,7 +45,7 @@
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="Get route" id="nsm-L5-CTv">
                             <connections>
-                                <action selector="routeDidTapped" destination="BYZ-38-t0r" id="zhb-zx-e3r"/>
+                                <action selector="getRouteDidTapped" destination="BYZ-38-t0r" id="Alu-vv-Ata"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
