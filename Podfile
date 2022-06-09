@@ -6,6 +6,7 @@ target 'Loca' do
   use_frameworks!
 
   pod 'GoogleMaps'
+  pod 'RealmSwift', '~>10'
 
   # Pods for Loca
 

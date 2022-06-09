@@ -13,7 +13,7 @@ final class MapViewModel: NSObject {
     private var geoCoder: CLGeocoder?
     private var locationManager: CLLocationManager?
     private var markersQueue: Queue<GMSMarker>
-    private var route: GMSPolyline?
+    private var routePolyline: GMSPolyline?
     private var routePath: GMSMutablePath?
     
     init(mapView: GMSMapView) {
@@ -52,7 +52,7 @@ final class MapViewModel: NSObject {
         locationManager?.startMonitoringSignificantLocationChanges()
     }
     
-    func drawPolyline() {
+    func drawPolylineByTappedMarkers() {
         
         guard markersQueue.isFull else { return }
         let coordinates = markersQueue.elements.map({$0.position})
@@ -92,27 +92,28 @@ final class MapViewModel: NSObject {
         
         routePath = GMSMutablePath()
         
-        cleanExistingRoute()
+        cleanExistingRoutePolyline()
         
-        route = GMSPolyline()
-        route?.map = mapView
+        routePolyline = GMSPolyline()
+        routePolyline?.map = mapView
         
         locationManager?.startUpdatingLocation()
     }
     
     func stopTracking() {
         locationManager?.stopUpdatingLocation()
+        routePath = nil
     }
     
     func saveTrack() {
         // TODO: Save
-        cleanExistingRoute()
+        cleanExistingRoutePolyline()
     }
     
-    private func cleanExistingRoute() {
-        guard let route = route else { return }
+    private func cleanExistingRoutePolyline() {
+        guard let route = routePolyline else { return }
         route.map = nil
-        self.route = nil
+        self.routePolyline = nil
     }
 }
 
@@ -144,7 +145,7 @@ extension MapViewModel: CLLocationManagerDelegate {
         guard let location = locations.last else { return }
         
         routePath?.add(location.coordinate)
-        route?.path = routePath
+        routePolyline?.path = routePath
         
         let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
         mapView.animate(to: position)
