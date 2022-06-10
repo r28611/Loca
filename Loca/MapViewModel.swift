@@ -16,6 +16,8 @@ final class MapViewModel: NSObject {
     private var routePolyline: GMSPolyline?
     private var routePath: GMSMutablePath?
     
+    private let realmManager = RealmManager.shared
+    
     init(mapView: GMSMapView) {
         self.mapView = mapView
         markersQueue = Queue<GMSMarker>(limit: 2)
@@ -131,10 +133,15 @@ extension MapViewModel: GMSMapViewDelegate {
             geoCoder = CLGeocoder()
         }
         
-//        geoCoder?.reverseGeocodeLocation(.init(latitude: coordinate.latitude, longitude: coordinate.longitude),
-//                                         completionHandler: { places, error in
-//            print(places?.last)
-//        })
+        geoCoder?.reverseGeocodeLocation(.init(latitude: coordinate.latitude, longitude: coordinate.longitude),
+                                         completionHandler: { places, error in
+            guard let location = places?.last?.location else { return }
+            
+            print(location)
+            
+            let locationRealm: Location = Location(latitude: location.coordinate.latitude, longitude: location.coordinate.latitude)
+            try? self.realmManager?.save(objects: [locationRealm])
+        })
     }
 }
 

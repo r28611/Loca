@@ -10,6 +10,6 @@ import RealmSwift
 
 class Route: Object {
     let coordinates = List<Location>()
-    dynamic var startDate = Date()
-    dynamic var endDate = Date()
+    @objc dynamic var startDate = Date()
+    @objc dynamic var endDate = Date()
 }
