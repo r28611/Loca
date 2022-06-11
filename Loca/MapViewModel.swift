@@ -148,7 +148,7 @@ extension MapViewModel: GMSMapViewDelegate {
             
             print(location)
             
-            let locationRealm: Location = Location(latitude: location.coordinate.latitude, longitude: location.coordinate.latitude)
+            let locationRealm: Location = Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             try? self.realmManager?.save(objects: [locationRealm])
         })
     }
