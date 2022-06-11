@@ -9,7 +9,24 @@ import Foundation
 import RealmSwift
 
 class Route: Object {
-    let coordinates = List<Location>()
-    @objc dynamic var startDate = Date()
+    var coordinates = List<Location>()
+    @objc dynamic var startDate: Date? = Date()
     @objc dynamic var endDate = Date()
+    @objc dynamic var id = ""
+    
+    override init() {}
+    
+    required init(startDate: Date? = nil, endDate: Date,coordinates: [Location] ) {
+        super.init()
+        self.startDate = startDate
+        self.endDate = endDate
+        self.id = DateFormatter().string(from: endDate)
+        coordinates.forEach {
+            self.coordinates.append($0)
+        }
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
 }

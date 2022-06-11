@@ -28,6 +28,12 @@ class Location: Object {
         self.id = String.init(latitude) + String.init(longitude)
     }
     
+    required init(from coordinate: CLLocationCoordinate2D) {
+        self.latitude = coordinate.latitude
+        self.longitude = coordinate.longitude
+        self.id = String.init(coordinate.latitude) + String.init(coordinate.longitude)
+    }
+    
     override static func primaryKey() -> String? {
         return "id"
     }

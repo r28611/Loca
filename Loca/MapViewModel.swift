@@ -108,7 +108,16 @@ final class MapViewModel: NSObject {
     }
     
     func saveTrack() {
-        // TODO: Save
+        guard let path = routePath else { return }
+        
+        var coordinates = [Location]()
+        for i in 0..<path.count() {
+            coordinates.append(Location(from: path.coordinate(at: i)))
+        }
+        
+        let routeRealm = Route(endDate: Date(), coordinates: coordinates)
+        try? realmManager?.save(objects: [routeRealm])
+        
         cleanExistingRoutePolyline()
     }
     
