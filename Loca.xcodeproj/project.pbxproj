@@ -12,13 +12,15 @@
 		AB3AC32428512910003FFAAB /* ChankedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AC32328512910003FFAAB /* ChankedArray.swift */; };
 		AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCA283E8E240036575F /* AppDelegate.swift */; };
 		AB9CFFCD283E8E240036575F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCC283E8E240036575F /* SceneDelegate.swift */; };
-		AB9CFFCF283E8E240036575F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCE283E8E240036575F /* ViewController.swift */; };
+		AB9CFFCF283E8E240036575F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCE283E8E240036575F /* MapViewController.swift */; };
 		AB9CFFD2283E8E240036575F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB9CFFD0283E8E240036575F /* Main.storyboard */; };
 		AB9CFFD4283E8E270036575F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9CFFD3283E8E270036575F /* Assets.xcassets */; };
 		AB9CFFD7283E8E270036575F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB9CFFD5283E8E270036575F /* LaunchScreen.storyboard */; };
 		ABBC14542853647100BF0697 /* LocationRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC14532853647100BF0697 /* LocationRealm.swift */; };
 		ABBC1456285364F100BF0697 /* RouteRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC1455285364F100BF0697 /* RouteRealm.swift */; };
 		ABBC14592853677400BF0697 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC14582853677400BF0697 /* RealmManager.swift */; };
+		ABBC145E285A3B3400BF0697 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABBC145D285A3B3400BF0697 /* Auth.storyboard */; };
+		ABBC1460285A3B9200BF0697 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC145F285A3B9200BF0697 /* AuthViewController.swift */; };
 		ABEDA64A28458DAE00DDC902 /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = ABEDA64928458DAE00DDC902 /* style.json */; };
 		ABEDA64C284671AB00DDC902 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDA64B284671AB00DDC902 /* Queue.swift */; };
 /* End PBXBuildFile section */
@@ -31,7 +33,7 @@
 		AB9CFFC7283E8E240036575F /* Loca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9CFFCA283E8E240036575F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB9CFFCC283E8E240036575F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AB9CFFCE283E8E240036575F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AB9CFFCE283E8E240036575F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AB9CFFD1283E8E240036575F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB9CFFD3283E8E270036575F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB9CFFD6283E8E270036575F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -39,6 +41,8 @@
 		ABBC14532853647100BF0697 /* LocationRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRealm.swift; sourceTree = "<group>"; };
 		ABBC1455285364F100BF0697 /* RouteRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRealm.swift; sourceTree = "<group>"; };
 		ABBC14582853677400BF0697 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		ABBC145D285A3B3400BF0697 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		ABBC145F285A3B9200BF0697 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		ABEDA64928458DAE00DDC902 /* style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
 		ABEDA64B284671AB00DDC902 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		ACE16BF64FA0492E52DA5D40 /* Pods-Loca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loca.release.xcconfig"; path = "Target Support Files/Pods-Loca/Pods-Loca.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,16 +88,6 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
-		AB3AC32628512CC6003FFAAB /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AB9CFFCE283E8E240036575F /* ViewController.swift */,
-				AB9CFFD0283E8E240036575F /* Main.storyboard */,
-				AB9CFFD5283E8E270036575F /* LaunchScreen.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		AB9CFFBE283E8E240036575F = {
 			isa = PBXGroup;
 			children = (
@@ -115,13 +109,9 @@
 		AB9CFFC9283E8E240036575F /* Loca */ = {
 			isa = PBXGroup;
 			children = (
-				AB9CFFCA283E8E240036575F /* AppDelegate.swift */,
-				AB9CFFCC283E8E240036575F /* SceneDelegate.swift */,
-				AB3AC32628512CC6003FFAAB /* View */,
-				AB3AC32128511F49003FFAAB /* MapViewModel.swift */,
-				ABBC145A28536A0600BF0697 /* Model */,
-				AB9CFFD3283E8E270036575F /* Assets.xcassets */,
-				AB9CFFD8283E8E270036575F /* Info.plist */,
+				ABBC1464285A3C7D00BF0697 /* App */,
+				ABBC1465285A3CC500BF0697 /* Resources */,
+				ABBC1466285A3CF800BF0697 /* Environments */,
 				AB3AC3252851293C003FFAAB /* Utility */,
 			);
 			path = Loca;
@@ -142,6 +132,62 @@
 				ABBC14572853659B00BF0697 /* Realm */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		ABBC1461285A3B9A00BF0697 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				ABBC145D285A3B3400BF0697 /* Auth.storyboard */,
+				ABBC145F285A3B9200BF0697 /* AuthViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		ABBC1462285A3C1200BF0697 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				ABBC1461285A3B9A00BF0697 /* Auth */,
+				ABBC1463285A3C2200BF0697 /* Map */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		ABBC1463285A3C2200BF0697 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				AB9CFFD0283E8E240036575F /* Main.storyboard */,
+				AB3AC32128511F49003FFAAB /* MapViewModel.swift */,
+				AB9CFFCE283E8E240036575F /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		ABBC1464285A3C7D00BF0697 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AB9CFFCA283E8E240036575F /* AppDelegate.swift */,
+				AB9CFFCC283E8E240036575F /* SceneDelegate.swift */,
+				ABBC1462285A3C1200BF0697 /* Flows */,
+				ABBC145A28536A0600BF0697 /* Model */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		ABBC1465285A3CC500BF0697 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AB9CFFD3283E8E270036575F /* Assets.xcassets */,
+				AB9CFFD5283E8E270036575F /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		ABBC1466285A3CF800BF0697 /* Environments */ = {
+			isa = PBXGroup;
+			children = (
+				AB9CFFD8283E8E270036575F /* Info.plist */,
+			);
+			path = Environments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB9CFFD7283E8E270036575F /* LaunchScreen.storyboard in Resources */,
+				ABBC145E285A3B3400BF0697 /* Auth.storyboard in Resources */,
 				AB9CFFD4283E8E270036575F /* Assets.xcassets in Resources */,
 				ABEDA64A28458DAE00DDC902 /* style.json in Resources */,
 				AB9CFFD2283E8E240036575F /* Main.storyboard in Resources */,
@@ -279,7 +326,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB3AC32428512910003FFAAB /* ChankedArray.swift in Sources */,
-				AB9CFFCF283E8E240036575F /* ViewController.swift in Sources */,
+				AB9CFFCF283E8E240036575F /* MapViewController.swift in Sources */,
+				ABBC1460285A3B9200BF0697 /* AuthViewController.swift in Sources */,
 				AB3AC32228511F49003FFAAB /* MapViewModel.swift in Sources */,
 				ABBC1456285364F100BF0697 /* RouteRealm.swift in Sources */,
 				ABBC14542853647100BF0697 /* LocationRealm.swift in Sources */,
@@ -436,7 +484,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 93LWHTP5BH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Loca/Info.plist;
+				INFOPLIST_FILE = Loca/Environments/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please enable";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -466,7 +514,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 93LWHTP5BH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Loca/Info.plist;
+				INFOPLIST_FILE = Loca/Environments/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please enable";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

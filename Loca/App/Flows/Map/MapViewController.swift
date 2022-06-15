@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  Loca
 //
 //  Created by Margarita Novokhatskaia on 25/05/2022.
@@ -8,7 +8,7 @@
 import UIKit
 import GoogleMaps
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
     
     private var beginBackgroundTask: UIBackgroundTaskIdentifier?
     private var mapViewModel: MapViewModel?
