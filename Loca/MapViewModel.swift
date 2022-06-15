@@ -1,38 +1,34 @@
 //
-//  ViewController.swift
+//  MapViewModel.swift
 //  Loca
 //
-//  Created by Margarita Novokhatskaia on 25/05/2022.
+//  Created by Margarita Novokhatskaia on 08/06/2022.
 //
 
-import UIKit
+import Foundation
 import GoogleMaps
 
-class ViewController: UIViewController {
-    
-    // 'Zhdun' (Homunculus Loxodontus) 52.1662, 4.4784
-    private let zhdunCoordinate = CLLocationCoordinate2D(latitude: 52.16767867509046, longitude: 4.478252575153958)
-    private var marker: GMSMarker?
+final class MapViewModel: NSObject {
+    let mapView: GMSMapView
     private var geoCoder: CLGeocoder?
     private var locationManager: CLLocationManager?
-    private var route: GMSPolyline?
+    private var markersQueue: Queue<GMSMarker>
+    private var routePolyline: GMSPolyline?
     private var routePath: GMSMutablePath?
-    private var markersQueue = Queue<GMSMarker>(limit: 2)
     
-    @IBOutlet weak var mapView: GMSMapView!
+    private let realmManager = RealmManager.shared
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureMap()
-        configureLocationManager()
+    init(mapView: GMSMapView) {
+        self.mapView = mapView
+        markersQueue = Queue<GMSMarker>(limit: 2)
     }
     
     func configureMap() {
-        let camera = GMSCameraPosition.camera(withTarget: zhdunCoordinate, zoom: 12)
-        mapView.camera = camera
+        
         mapView.isMyLocationEnabled = true
         
         mapView.delegate = self
+        
         do {
             // Set the map style by passing the URL of the local file.
             if let styleURL = Bundle.main.url(forResource: "style", withExtension: "json") {
@@ -43,51 +39,8 @@ class ViewController: UIViewController {
         } catch {
             NSLog("One or more of the map styles failed to load. \(error)")
         }
-    }
-    
-    @IBAction private func goTo(_ sender: UIButton) {
         
-        if marker == nil {
-            findZhdun()
-            addZhdun()
-        } else {
-            removeMarker()
-        }
-    }
-    
-    @IBAction private func routeDidTapped() {
-        drawPolyline()
-    }
-    
-    @IBAction private func updateLocation(_ sender: UIBarButtonItem) {
-        route?.map = nil
-        route = GMSPolyline()
-        routePath = GMSMutablePath()
-        route?.map = mapView
-        
-        locationManager?.startUpdatingLocation()
-    }
-    
-    private func findZhdun() {
-        mapView.animate(to: GMSCameraPosition(latitude: zhdunCoordinate.latitude,
-                                              longitude: zhdunCoordinate.longitude,
-                                              zoom: 15))
-    }
-    
-    private func addZhdun() {
-        marker = GMSMarker(position: zhdunCoordinate)
-        
-        marker?.icon = UIImage(named: "zhdun-icon")
-        marker?.title = "Homunculus Loxodontus"
-        marker?.snippet = "Waiting for you..."
-        marker?.groundAnchor = CGPoint(x: 0.5, y: 0.5)
-        
-        marker?.map = mapView
-    }
-    
-    func removeMarker() {
-        marker?.map = nil
-        marker = nil
+        configureLocationManager()
     }
     
     private func configureLocationManager() {
@@ -95,12 +48,13 @@ class ViewController: UIViewController {
             locationManager = CLLocationManager()
         }
         locationManager?.delegate = self
-        
-        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.requestAlwaysAuthorization()
         locationManager?.allowsBackgroundLocationUpdates = true
+        locationManager?.pausesLocationUpdatesAutomatically = false
+        locationManager?.startMonitoringSignificantLocationChanges()
     }
     
-    func drawPolyline() {
+    func drawPolylineByTappedMarkers() {
         
         guard markersQueue.isFull else { return }
         let coordinates = markersQueue.elements.map({$0.position})
@@ -135,9 +89,46 @@ class ViewController: UIViewController {
         let bounds = GMSCoordinateBounds(path: path)
         self.mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 150.0))
     }
+    
+    func startTracking() {
+        
+        routePath = GMSMutablePath()
+        
+        cleanExistingRoutePolyline()
+        
+        routePolyline = GMSPolyline()
+        routePolyline?.map = mapView
+        
+        locationManager?.startUpdatingLocation()
+    }
+    
+    func stopTracking() {
+        locationManager?.stopUpdatingLocation()
+        routePath = nil
+    }
+    
+    func saveTrack() {
+        guard let path = routePath else { return }
+        
+        var coordinates = [Location]()
+        for i in 0..<path.count() {
+            coordinates.append(Location(from: path.coordinate(at: i)))
+        }
+        
+        let routeRealm = Route(endDate: Date(), coordinates: coordinates)
+        try? realmManager?.save(objects: [routeRealm])
+        
+        cleanExistingRoutePolyline()
+    }
+    
+    private func cleanExistingRoutePolyline() {
+        guard let route = routePolyline else { return }
+        route.map = nil
+        self.routePolyline = nil
+    }
 }
 
-extension ViewController: GMSMapViewDelegate {
+extension MapViewModel: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         let marker = GMSMarker(position: coordinate)
         marker.map = mapView
@@ -153,36 +144,30 @@ extension ViewController: GMSMapViewDelegate {
         
         geoCoder?.reverseGeocodeLocation(.init(latitude: coordinate.latitude, longitude: coordinate.longitude),
                                          completionHandler: { places, error in
-            print(places?.last)
+            guard let location = places?.last?.location else { return }
+            
+            print(location)
+            
+            let locationRealm: Location = Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            try? self.realmManager?.save(objects: [locationRealm])
         })
     }
 }
 
-extension ViewController: CLLocationManagerDelegate {
+extension MapViewModel: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager,
                          didUpdateLocations locations: [CLLocation]) {
         
         guard let location = locations.last else { return }
         
         routePath?.add(location.coordinate)
-        route?.path = routePath
+        routePolyline?.path = routePath
         
         let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
         mapView.animate(to: position)
-        
-        print(location.coordinate)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
-    }
-}
-
-
-extension Array {
-    func chunked(into size: Int) -> [[Element]] {
-        return stride(from: 0, to: count, by: size).map {
-            Array(self[$0 ..< Swift.min($0 + size, count)])
-        }
     }
 }

@@ -20,35 +20,39 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kqi-59-JX0">
-                                <rect key="frame" x="140.5" y="799" width="133" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Where is Zhdun?"/>
-                                <connections>
-                                    <action selector="goTo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SMg-ig-CQo"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ChQ-dX-clc" secondAttribute="trailing" id="1FD-K6-8Jw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ChQ-dX-clc" secondAttribute="bottom" id="4Mx-do-45Y"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kqi-59-JX0" secondAttribute="bottom" constant="32" id="9HW-wl-SvM"/>
-                            <constraint firstItem="kqi-59-JX0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QmQ-g9-Eqo"/>
                             <constraint firstItem="ChQ-dX-clc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dg7-uj-lPA"/>
                             <constraint firstItem="ChQ-dX-clc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qZv-iE-Pkt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="in2-9X-zh9">
-                        <barButtonItem key="leftBarButtonItem" title="Route" id="nsm-L5-CTv">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Item" image="record.circle" catalog="system" id="vP8-wZ-db0">
+                                <color key="tintColor" red="0.75706166029999999" green="0.0" blue="0.642088294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="startTrackDidTapped:" destination="BYZ-38-t0r" id="b6d-KW-ljQ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="stop" id="yRb-Rv-mvi">
+                                <color key="tintColor" systemColor="systemTealColor"/>
+                                <connections>
+                                    <action selector="stopTrackDidTapped:" destination="BYZ-38-t0r" id="aAQ-dk-jyt"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="save" id="5Se-zQ-ZGr">
+                                <connections>
+                                    <action selector="saveTrackDidTapped:" destination="BYZ-38-t0r" id="RSH-Nt-5HP"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Get route" id="nsm-L5-CTv">
                             <connections>
-                                <action selector="routeDidTapped" destination="BYZ-38-t0r" id="zhb-zx-e3r"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Update location" id="vP8-wZ-db0">
-                            <connections>
-                                <action selector="updateLocation:" destination="BYZ-38-t0r" id="ie2-ua-H5j"/>
+                                <action selector="getRouteDidTapped" destination="BYZ-38-t0r" id="Alu-vv-Ata"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -80,8 +84,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="record.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
