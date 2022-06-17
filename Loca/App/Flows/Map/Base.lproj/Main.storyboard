@@ -50,11 +50,18 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Get route" id="nsm-L5-CTv">
-                            <connections>
-                                <action selector="getRouteDidTapped" destination="BYZ-38-t0r" id="Alu-vv-Ata"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Auth" image="person.crop.circle" catalog="system" id="QgU-NX-fnx">
+                                <connections>
+                                    <action selector="authDidTapped:" destination="BYZ-38-t0r" id="vxD-42-IMf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Get route" id="nsm-L5-CTv">
+                                <connections>
+                                    <action selector="getRouteDidTapped" destination="BYZ-38-t0r" id="Alu-vv-Ata"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="ChQ-dX-clc" id="FIs-a1-SuG"/>
@@ -84,6 +91,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="record.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

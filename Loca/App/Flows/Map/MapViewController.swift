@@ -39,6 +39,10 @@ class MapViewController: UIViewController {
         mapViewModel?.saveTrack()
     }
     
+    @IBAction private func authDidTapped(_ sender: UIBarButtonItem) {
+        navigationController?.pushViewController(AuthViewController(), animated: true)
+    }
+    
     private func showAlert() {
         
         let alertController = UIAlertController(title: "Start a new track",
