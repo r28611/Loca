@@ -15,6 +15,7 @@ class SignInView: UIView {
         static let signInText = "Let's Sign You In"
         static let loginText = "Email"
         static let passwordText = "Password"
+        static let passwordRecoveryText = "Forgot the password?"
         static let imageName = "prev-loca"
         static let fontTitle = UIFont(name: "MuktaMahee Bold", size: 32)
         static let fontRegular = UIFont(name: "MuktaMahee Bold", size: 16)
@@ -47,7 +48,26 @@ class SignInView: UIView {
         return label
     }()
     
-    private let starLabel: UILabel = {
+    private let usernameStarLabel: UILabel = {
+        let label = UILabel()
+        label.font = Constants.fontRegular
+        label.textColor = UIColor.red
+        label.text = "*"
+        label.setContentHuggingPriority(.init(rawValue: 250), for: .horizontal)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let passwordLabel: UILabel = {
+        let label = UILabel()
+        label.font = Constants.fontRegular
+        label.text = Constants.passwordText
+        label.setContentHuggingPriority(.init(rawValue: 251), for: .horizontal)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let passwordStarLabel: UILabel = {
         let label = UILabel()
         label.font = Constants.fontRegular
         label.textColor = UIColor.red
@@ -60,7 +80,12 @@ class SignInView: UIView {
     private let usernameTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 25
+        return textField
+    }()
+    
+    private let passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.borderStyle = .roundedRect
         return textField
     }()
     
@@ -70,6 +95,7 @@ class SignInView: UIView {
         button.setTitle("Sign In", for: .normal)
         button.tintColor = .white
         button.backgroundColor = Constants.cianColor
+        button.layer.cornerRadius = 5
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isEnabled = false
         return button
@@ -78,15 +104,24 @@ class SignInView: UIView {
     private let passwordRecoveryButton: UIButton = {
         let button = UIButton(type: .system)
         button.titleLabel?.font = Constants.fontRegular
-        button.setTitle("Password recovery", for: .normal)
-        button.tintColor = .black
+        button.setTitle(Constants.passwordRecoveryText, for: .normal)
+        button.tintColor = Constants.cianColor
         button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private lazy var usernameStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [usernameLabel, starLabel])
+        let stack = UIStackView(arrangedSubviews: [usernameLabel, usernameStarLabel])
+        stack.axis = .horizontal
+        stack.distribution = .fill
+        stack.spacing = 0
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    private lazy var passwordStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [passwordLabel, passwordStarLabel])
         stack.axis = .horizontal
         stack.distribution = .fill
         stack.spacing = 0
@@ -100,11 +135,13 @@ class SignInView: UIView {
                                      signInLabel,
                                      usernameStackView,
                                      usernameTextField,
+                                     passwordStackView,
+                                     passwordTextField,
                                      signinButton,
                                      passwordRecoveryButton])
         stack.axis = .vertical
-        stack.distribution = .fillEqually
-        stack.spacing = 8
+        stack.distribution = .fill
+        stack.spacing = 12
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -131,21 +168,28 @@ class SignInView: UIView {
         
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: margins.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: margins.bottomAnchor),
+            stackView.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -160),
             stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            usernameTextField.heightAnchor.constraint(
-                equalToConstant: 50
-            )
-            
+            image.widthAnchor.constraint(equalToConstant: 160),
+            image.heightAnchor.constraint(equalToConstant: 160)
         ])
         
         NSLayoutConstraint.activate([
-            image.widthAnchor.constraint(equalToConstant: 320),
-            image.heightAnchor.constraint(equalToConstant: 320)
+            usernameTextField.heightAnchor.constraint(
+                equalToConstant: 50),
+            passwordTextField.heightAnchor.constraint(
+                equalToConstant: 50),
         ])
+        NSLayoutConstraint.activate([
+            signinButton.heightAnchor.constraint(
+                equalToConstant: 50),
+            passwordRecoveryButton.heightAnchor.constraint(
+                equalToConstant: 50),
+        ])
+
     }
 }
