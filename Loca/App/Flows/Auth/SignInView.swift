@@ -16,10 +16,12 @@ class SignInView: UIView {
         static let loginText = "Email"
         static let passwordText = "Password"
         static let passwordRecoveryText = "Forgot the password?"
+        static let makeAccountTextLabel = "Don't have an account?"
+        static let makeAccountTextButton = "Sign up"
         static let imageName = "prev-loca"
         static let fontTitle = UIFont(name: "MuktaMahee Bold", size: 32)
         static let fontRegular = UIFont(name: "MuktaMahee Bold", size: 16)
-        static let cianColor = UIColor(red: 0.19, green: 0.69, blue: 0.78, alpha: 1.00)
+        static let cianColor = UIColor(red: 1.00, green: 0.42, blue: 0.39, alpha: 1.00)
     }
     
     private var image: UIImageView = {
@@ -95,7 +97,7 @@ class SignInView: UIView {
         button.setTitle("Sign In", for: .normal)
         button.tintColor = .white
         button.backgroundColor = Constants.cianColor
-        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = 25
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isEnabled = false
         return button
@@ -111,6 +113,24 @@ class SignInView: UIView {
         return button
     }()
     
+    private let makeAccountLabel: UILabel = {
+        let label = UILabel()
+        label.font = Constants.fontRegular
+        label.text = Constants.makeAccountTextLabel
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let makeAccountButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.titleLabel?.font = Constants.fontRegular
+        button.setTitle(Constants.makeAccountTextButton, for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.tintColor = Constants.cianColor
+        button.backgroundColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     private lazy var usernameStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [usernameLabel, usernameStarLabel])
         stack.axis = .horizontal
@@ -129,6 +149,21 @@ class SignInView: UIView {
         return stack
     }()
     
+    private lazy var makeAccountStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [makeAccountLabel, makeAccountButton])
+        stack.axis = .horizontal
+        stack.spacing = 5
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    private lazy var makeAccountView: UIView = {
+        let view = UIView()
+        view.addSubview(makeAccountStackView)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews:
                                     [image,
@@ -138,7 +173,8 @@ class SignInView: UIView {
                                      passwordStackView,
                                      passwordTextField,
                                      signinButton,
-                                     passwordRecoveryButton])
+                                     passwordRecoveryButton,
+                                     makeAccountView])
         stack.axis = .vertical
         stack.distribution = .fill
         stack.spacing = 12
@@ -190,6 +226,16 @@ class SignInView: UIView {
             passwordRecoveryButton.heightAnchor.constraint(
                 equalToConstant: 50),
         ])
-
+        
+        NSLayoutConstraint.activate([
+            makeAccountView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            makeAccountView.trailingAnchor.constraint(equalTo: margins.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            makeAccountStackView.centerXAnchor.constraint(equalTo: makeAccountView.centerXAnchor),
+            makeAccountStackView.topAnchor.constraint(equalTo: makeAccountView.topAnchor),
+            makeAccountStackView.bottomAnchor.constraint(equalTo: makeAccountView.bottomAnchor),
+        ])
     }
 }
