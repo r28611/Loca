@@ -21,8 +21,10 @@ class SignInView: UIView {
         static let imageName = "prev-loca"
         static let fontTitle = UIFont(name: "MuktaMahee Bold", size: 32)
         static let fontRegular = UIFont(name: "MuktaMahee Bold", size: 16)
-        static let cianColor = UIColor(red: 1.00, green: 0.42, blue: 0.39, alpha: 1.00)
+        static let cianColor = UIColor(red: 0.19, green: 0.69, blue: 0.78, alpha: 1.00)
     }
+    
+    // MARK: - Subviews
     
     private var image: UIImageView = {
         let imageView = UIImageView()
@@ -166,8 +168,7 @@ class SignInView: UIView {
     
     private lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews:
-                                    [image,
-                                     signInLabel,
+                                    [signInLabel,
                                      usernameStackView,
                                      usernameTextField,
                                      passwordStackView,
@@ -176,7 +177,7 @@ class SignInView: UIView {
                                      passwordRecoveryButton,
                                      makeAccountView])
         stack.axis = .vertical
-        stack.distribution = .fill
+        stack.alignment = .fill
         stack.spacing = 12
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
@@ -193,6 +194,7 @@ class SignInView: UIView {
     
     private func setupView() {
         backgroundColor = .white
+        addSubview(image)
         addSubview(stackView)
         image.image = UIImage(named: Constants.imageName)
         setupConstraints()
@@ -203,7 +205,12 @@ class SignInView: UIView {
         let margins = layoutMarginsGuide
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: margins.topAnchor),
+            image.topAnchor.constraint(equalTo: margins.topAnchor),
+            image.centerXAnchor.constraint(equalTo: margins.centerXAnchor),
+        ])
+        
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: image.bottomAnchor),
             stackView.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -160),
             stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor)
@@ -211,7 +218,7 @@ class SignInView: UIView {
         
         NSLayoutConstraint.activate([
             image.widthAnchor.constraint(equalToConstant: 160),
-            image.heightAnchor.constraint(equalToConstant: 160)
+            image.heightAnchor.constraint(equalToConstant: 160),
         ])
         
         NSLayoutConstraint.activate([
