@@ -20,7 +20,7 @@
 		ABBC1456285364F100BF0697 /* RouteRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC1455285364F100BF0697 /* RouteRealm.swift */; };
 		ABBC14592853677400BF0697 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC14582853677400BF0697 /* RealmManager.swift */; };
 		ABBC1460285A3B9200BF0697 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC145F285A3B9200BF0697 /* AuthViewController.swift */; };
-		ABBC146A285C8FAA00BF0697 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC1469285C8FAA00BF0697 /* SignInView.swift */; };
+		ABBC146A285C8FAA00BF0697 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC1469285C8FAA00BF0697 /* AuthView.swift */; };
 		ABEDA64A28458DAE00DDC902 /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = ABEDA64928458DAE00DDC902 /* style.json */; };
 		ABEDA64C284671AB00DDC902 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDA64B284671AB00DDC902 /* Queue.swift */; };
 /* End PBXBuildFile section */
@@ -42,7 +42,7 @@
 		ABBC1455285364F100BF0697 /* RouteRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRealm.swift; sourceTree = "<group>"; };
 		ABBC14582853677400BF0697 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		ABBC145F285A3B9200BF0697 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		ABBC1469285C8FAA00BF0697 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		ABBC1469285C8FAA00BF0697 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		ABEDA64928458DAE00DDC902 /* style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
 		ABEDA64B284671AB00DDC902 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		ACE16BF64FA0492E52DA5D40 /* Pods-Loca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loca.release.xcconfig"; path = "Target Support Files/Pods-Loca/Pods-Loca.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		ABBC1461285A3B9A00BF0697 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				ABBC1469285C8FAA00BF0697 /* SignInView.swift */,
+				ABBC1469285C8FAA00BF0697 /* AuthView.swift */,
 				ABBC145F285A3B9200BF0697 /* AuthViewController.swift */,
 			);
 			path = Auth;
@@ -333,7 +333,7 @@
 				ABBC14592853677400BF0697 /* RealmManager.swift in Sources */,
 				AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */,
 				AB9CFFCD283E8E240036575F /* SceneDelegate.swift in Sources */,
-				ABBC146A285C8FAA00BF0697 /* SignInView.swift in Sources */,
+				ABBC146A285C8FAA00BF0697 /* AuthView.swift in Sources */,
 				ABEDA64C284671AB00DDC902 /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,7 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        view = SignInView()
+        view = AuthView()
     }
     
     // MARK: Actions
