@@ -17,16 +17,25 @@ class AuthViewController: UIViewController {
         
         view = authView
         authView.passwordRecoveryButtonHandler = passwordRecovery.self
+        authView.goButtonHandler = auth.self
     }
     
     // MARK: Actions
     
-    @objc private func authButtonTapped() {
-//        navigationController?.pushViewController(SigninViewController(), animated: true)
+    private func auth(username: String?, password: String?) {
+        guard let username = username,
+            let password = password else { return }
+        
+        if username == AuthSample.login,
+           password == AuthSample.password {
+            print("Success!!! Now user is login")
+            UserDefaults.standard.set(true, forKey: "isLogin")
+            navigationController?.popViewController(animated: true)
+        }
     }
     
-    @objc private func registerButtonTapped() {
-//        navigationController?.pushViewController(RegisterViewController(), animated: true)
+    private func register() {
+        
     }
     
     private func passwordRecovery() {

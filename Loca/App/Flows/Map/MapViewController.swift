@@ -40,7 +40,9 @@ class MapViewController: UIViewController {
     }
     
     @IBAction private func authDidTapped(_ sender: UIBarButtonItem) {
-        navigationController?.pushViewController(AuthViewController(), animated: true)
+        if !UserDefaults.standard.bool(forKey: "isLogin") {
+            navigationController?.pushViewController(AuthViewController(), animated: true)
+        }
     }
     
     private func showAlert() {

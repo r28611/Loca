@@ -12,6 +12,7 @@
 		AB3AC32428512910003FFAAB /* ChankedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AC32328512910003FFAAB /* ChankedArray.swift */; };
 		AB7660192866089100BD7B2E /* PasswordRecoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7660182866089100BD7B2E /* PasswordRecoveryView.swift */; };
 		AB76601B28660B0900BD7B2E /* PasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76601A28660B0900BD7B2E /* PasswordRecoveryViewController.swift */; };
+		AB76601D286617E300BD7B2E /* AuthSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76601C286617E300BD7B2E /* AuthSample.swift */; };
 		AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCA283E8E240036575F /* AppDelegate.swift */; };
 		AB9CFFCD283E8E240036575F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCC283E8E240036575F /* SceneDelegate.swift */; };
 		AB9CFFCF283E8E240036575F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCE283E8E240036575F /* MapViewController.swift */; };
@@ -34,6 +35,7 @@
 		AB3AC32328512910003FFAAB /* ChankedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChankedArray.swift; sourceTree = "<group>"; };
 		AB7660182866089100BD7B2E /* PasswordRecoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryView.swift; sourceTree = "<group>"; };
 		AB76601A28660B0900BD7B2E /* PasswordRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewController.swift; sourceTree = "<group>"; };
+		AB76601C286617E300BD7B2E /* AuthSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSample.swift; sourceTree = "<group>"; };
 		AB9CFFC7283E8E240036575F /* Loca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9CFFCA283E8E240036575F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB9CFFCC283E8E240036575F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		ABBC145A28536A0600BF0697 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AB76601C286617E300BD7B2E /* AuthSample.swift */,
 				ABBC14572853659B00BF0697 /* Realm */,
 			);
 			path = Model;
@@ -333,6 +336,7 @@
 				AB3AC32428512910003FFAAB /* ChankedArray.swift in Sources */,
 				AB9CFFCF283E8E240036575F /* MapViewController.swift in Sources */,
 				ABBC1460285A3B9200BF0697 /* AuthViewController.swift in Sources */,
+				AB76601D286617E300BD7B2E /* AuthSample.swift in Sources */,
 				AB3AC32228511F49003FFAAB /* MapViewModel.swift in Sources */,
 				AB76601B28660B0900BD7B2E /* PasswordRecoveryViewController.swift in Sources */,
 				ABBC1456285364F100BF0697 /* RouteRealm.swift in Sources */,

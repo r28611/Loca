@@ -108,7 +108,6 @@ class AuthView: UIView {
         button.backgroundColor = Constants.cianColor
         button.layer.cornerRadius = 25
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.isEnabled = false
         return button
     }()
     
