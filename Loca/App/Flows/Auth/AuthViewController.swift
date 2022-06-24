@@ -9,12 +9,14 @@ import UIKit
 
 class AuthViewController: UIViewController {
 
+    private let authView = AuthView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        view = AuthView()
+        view = authView
+        authView.passwordRecoveryButtonHandler = passwordRecovery.self
     }
     
     // MARK: Actions
@@ -25,5 +27,9 @@ class AuthViewController: UIViewController {
     
     @objc private func registerButtonTapped() {
 //        navigationController?.pushViewController(RegisterViewController(), animated: true)
+    }
+    
+    private func passwordRecovery() {
+        navigationController?.pushViewController(PasswordRecoveryViewController(), animated: true)
     }
 }

@@ -9,7 +9,8 @@ import UIKit
 
 class AuthView: UIView {
     
-    @objc var goButtonHandler: ((String, String) -> Void)?
+    var goButtonHandler: ((String?, String?) -> Void)?
+    var passwordRecoveryButtonHandler: (() -> Void)?
     
     enum Constants {
         static let signInTitleText = "Let's Sign You In"
@@ -177,9 +178,7 @@ class AuthView: UIView {
                                      usernameTextField,
                                      passwordStackView,
                                      passwordTextField,
-                                     goButton,
-                                     passwordRecoveryButton,
-                                     accountStateView])
+                                     goButton])
         stack.axis = .vertical
         stack.alignment = .fill
         stack.spacing = 12
@@ -204,6 +203,8 @@ class AuthView: UIView {
         backgroundColor = .white
         addSubview(image)
         addSubview(stackView)
+        addSubview(passwordRecoveryButton)
+        addSubview(accountStateView)
         image.image = UIImage(named: Constants.imageName)
         setupConstraints()
         setupSignText()
@@ -221,7 +222,6 @@ class AuthView: UIView {
         
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: image.bottomAnchor),
-            stackView.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -160),
             stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor)
         ])
@@ -232,21 +232,21 @@ class AuthView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            usernameTextField.heightAnchor.constraint(
-                equalToConstant: 50),
-            passwordTextField.heightAnchor.constraint(
-                equalToConstant: 50),
+            usernameTextField.heightAnchor.constraint(equalToConstant: 50),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 50),
+            goButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         NSLayoutConstraint.activate([
-            goButton.heightAnchor.constraint(
-                equalToConstant: 50),
-            passwordRecoveryButton.heightAnchor.constraint(
-                equalToConstant: 50),
+            passwordRecoveryButton.topAnchor.constraint(equalTo: stackView.bottomAnchor),
+            passwordRecoveryButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            passwordRecoveryButton.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            passwordRecoveryButton.heightAnchor.constraint(equalToConstant: 50),
         ])
         
         NSLayoutConstraint.activate([
             accountStateView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            accountStateView.trailingAnchor.constraint(equalTo: margins.trailingAnchor)
+            accountStateView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+            accountStateView.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -8)
         ])
         
         NSLayoutConstraint.activate([
@@ -276,11 +276,20 @@ class AuthView: UIView {
     
     private func setButtonsActions() {
         accountStateButton.addTarget(self, action: #selector(toogleAccountState), for: .touchUpInside)
-        goButton.addTarget(self, action: #selector(getter: goButtonHandler), for: .touchUpInside)
+        goButton.addTarget(self, action: #selector(goButtonTapped), for: .touchUpInside)
+        passwordRecoveryButton.addTarget(self, action: #selector(passwordRecoveryButtonTapped), for: .touchUpInside)
     }
     
     @objc private func toogleAccountState() {
         isAccountExist.toggle()
         setupSignText()
+    }
+    
+    @objc private func goButtonTapped() {
+        goButtonHandler?(self.usernameTextField.text, self.passwordTextField.text)
+    }
+    
+    @objc private func passwordRecoveryButtonTapped() {
+        passwordRecoveryButtonHandler?()
     }
 }

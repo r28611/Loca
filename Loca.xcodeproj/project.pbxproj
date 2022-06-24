@@ -10,6 +10,8 @@
 		85F9DA7D87202CD65E33937E /* Pods_Loca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52EFB4E5A77D03716F401341 /* Pods_Loca.framework */; };
 		AB3AC32228511F49003FFAAB /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AC32128511F49003FFAAB /* MapViewModel.swift */; };
 		AB3AC32428512910003FFAAB /* ChankedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AC32328512910003FFAAB /* ChankedArray.swift */; };
+		AB7660192866089100BD7B2E /* PasswordRecoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7660182866089100BD7B2E /* PasswordRecoveryView.swift */; };
+		AB76601B28660B0900BD7B2E /* PasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76601A28660B0900BD7B2E /* PasswordRecoveryViewController.swift */; };
 		AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCA283E8E240036575F /* AppDelegate.swift */; };
 		AB9CFFCD283E8E240036575F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCC283E8E240036575F /* SceneDelegate.swift */; };
 		AB9CFFCF283E8E240036575F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCE283E8E240036575F /* MapViewController.swift */; };
@@ -30,6 +32,8 @@
 		7D19F1AF173B0070FB56693F /* Pods-Loca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loca.debug.xcconfig"; path = "Target Support Files/Pods-Loca/Pods-Loca.debug.xcconfig"; sourceTree = "<group>"; };
 		AB3AC32128511F49003FFAAB /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		AB3AC32328512910003FFAAB /* ChankedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChankedArray.swift; sourceTree = "<group>"; };
+		AB7660182866089100BD7B2E /* PasswordRecoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryView.swift; sourceTree = "<group>"; };
+		AB76601A28660B0900BD7B2E /* PasswordRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewController.swift; sourceTree = "<group>"; };
 		AB9CFFC7283E8E240036575F /* Loca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9CFFCA283E8E240036575F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB9CFFCC283E8E240036575F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,7 +142,9 @@
 			isa = PBXGroup;
 			children = (
 				ABBC1469285C8FAA00BF0697 /* AuthView.swift */,
+				AB7660182866089100BD7B2E /* PasswordRecoveryView.swift */,
 				ABBC145F285A3B9200BF0697 /* AuthViewController.swift */,
+				AB76601A28660B0900BD7B2E /* PasswordRecoveryViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -328,8 +334,10 @@
 				AB9CFFCF283E8E240036575F /* MapViewController.swift in Sources */,
 				ABBC1460285A3B9200BF0697 /* AuthViewController.swift in Sources */,
 				AB3AC32228511F49003FFAAB /* MapViewModel.swift in Sources */,
+				AB76601B28660B0900BD7B2E /* PasswordRecoveryViewController.swift in Sources */,
 				ABBC1456285364F100BF0697 /* RouteRealm.swift in Sources */,
 				ABBC14542853647100BF0697 /* LocationRealm.swift in Sources */,
+				AB7660192866089100BD7B2E /* PasswordRecoveryView.swift in Sources */,
 				ABBC14592853677400BF0697 /* RealmManager.swift in Sources */,
 				AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */,
 				AB9CFFCD283E8E240036575F /* SceneDelegate.swift in Sources */,
