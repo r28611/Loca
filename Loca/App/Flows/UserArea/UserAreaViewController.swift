@@ -9,6 +9,12 @@ import UIKit
 
 class UserAreaViewController: UITableViewController {
     
+    private let userAreaSettingsRows: [Int: UserAreaSettings] = [
+        0: .editProfile,
+        1: .notification,
+        2: .logout
+    ]
+    
     // MARK: - Initialization
     
     init() {
@@ -43,19 +49,24 @@ class UserAreaViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            let cell = UserAreaCell(.editProfile)
-            return cell
-        case 1:
-            let cell = UserAreaCell(.notification)
-            return cell
-        case 2:
-            let cell = UserAreaCell(.logout)
-            return cell
-        default:
-            return UITableViewCell()
+        guard let settingType = userAreaSettingsRows[indexPath.row]
+            else { return UITableViewCell() }
+        
+        return UserAreaCell(settingType)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if userAreaSettingsRows[indexPath.row] == .logout {
+            
+            UserDefaults.standard.set(false, forKey: "isLogin")
+            
+            self.navigationController?.popViewController(animated: true)
+            
         }
+        
     }
 }
 
