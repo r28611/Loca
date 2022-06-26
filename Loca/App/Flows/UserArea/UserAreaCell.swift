@@ -10,9 +10,9 @@ import UIKit
 class UserAreaCell: UITableViewCell {
     
     private var userAreaCells: [UserAreaSettings: String] = [
-        .editProfile: "Edit prifile",
-        .notification: "Notification",
-        .logout: "Logout"
+        .editProfile: Text.editProfile,
+        .notification: Text.notification,
+        .logout: Text.logout
     ]
     
     private let cellLabel: UILabel = {

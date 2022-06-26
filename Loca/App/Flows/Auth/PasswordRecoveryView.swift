@@ -12,9 +12,6 @@ class PasswordRecoveryView: UIView {
     var buttonHandler: (() -> Void)?
     
     enum Constants {
-        static let titleText = "Reset Your Password"
-        static let loginText = "Your Email"
-        static let buttonText = "Continue"
         static let imageName = "prev-loca"
         static let fontTitle = UIFont(name: "MuktaMahee Bold", size: 32)
         static let fontRegular = UIFont(name: "MuktaMahee Bold", size: 16)
@@ -33,7 +30,7 @@ class PasswordRecoveryView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.titleText
+        label.text = Text.resetPassword
         label.textAlignment = .center
         label.font = Constants.fontTitle
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +40,7 @@ class PasswordRecoveryView: UIView {
     private let usernameLabel: UILabel = {
         let label = UILabel()
         label.font = Constants.fontRegular
-        label.text = Constants.loginText
+        label.text = Text.yourEmail
         label.setContentHuggingPriority(.init(rawValue: 251), for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -53,7 +50,7 @@ class PasswordRecoveryView: UIView {
         let label = UILabel()
         label.font = Constants.fontRegular
         label.textColor = UIColor.red
-        label.text = "*"
+        label.text = Text.starSimbol
         label.setContentHuggingPriority(.init(rawValue: 250), for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -67,7 +64,7 @@ class PasswordRecoveryView: UIView {
     
     private let goButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(Constants.buttonText, for: .normal)
+        button.setTitle(Text.continueText, for: .normal)
         button.titleLabel?.font = Constants.fontRegular
         button.tintColor = .white
         button.backgroundColor = Constants.cianColor

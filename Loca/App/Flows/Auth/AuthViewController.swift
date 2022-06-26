@@ -28,7 +28,6 @@ class AuthViewController: UIViewController {
         
         if username == AuthSample.login,
            password == AuthSample.password {
-            print("Success!!! Now user is login")
             UserDefaults.standard.set(true, forKey: "isLogin")
             navigationController?.popViewController(animated: true)
         }

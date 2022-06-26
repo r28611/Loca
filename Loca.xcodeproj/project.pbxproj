@@ -16,6 +16,7 @@
 		AB7660202867763300BD7B2E /* UserAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76601F2867763300BD7B2E /* UserAreaViewController.swift */; };
 		AB76602228677BB600BD7B2E /* UserAreaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76602128677BB600BD7B2E /* UserAreaCell.swift */; };
 		AB76602428677C9D00BD7B2E /* UserAreaSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76602328677C9D00BD7B2E /* UserAreaSettings.swift */; };
+		AB76602A28686D5200BD7B2E /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76602928686D5200BD7B2E /* Text.swift */; };
 		AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCA283E8E240036575F /* AppDelegate.swift */; };
 		AB9CFFCD283E8E240036575F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCC283E8E240036575F /* SceneDelegate.swift */; };
 		AB9CFFCF283E8E240036575F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCE283E8E240036575F /* MapViewController.swift */; };
@@ -42,6 +43,7 @@
 		AB76601F2867763300BD7B2E /* UserAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAreaViewController.swift; sourceTree = "<group>"; };
 		AB76602128677BB600BD7B2E /* UserAreaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAreaCell.swift; sourceTree = "<group>"; };
 		AB76602328677C9D00BD7B2E /* UserAreaSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAreaSettings.swift; sourceTree = "<group>"; };
+		AB76602928686D5200BD7B2E /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		AB9CFFC7283E8E240036575F /* Loca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9CFFCA283E8E240036575F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB9CFFCC283E8E240036575F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,22 @@
 			path = UserArea;
 			sourceTree = "<group>";
 		};
+		AB76602728686D3200BD7B2E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AB76602828686D4500BD7B2E /* Helpers */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		AB76602828686D4500BD7B2E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AB76602928686D5200BD7B2E /* Text.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		AB9CFFBE283E8E240036575F = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +148,7 @@
 		AB9CFFC9283E8E240036575F /* Loca */ = {
 			isa = PBXGroup;
 			children = (
+				AB76602728686D3200BD7B2E /* Common */,
 				ABBC1464285A3C7D00BF0697 /* App */,
 				ABBC1465285A3CC500BF0697 /* Resources */,
 				ABBC1466285A3CF800BF0697 /* Environments */,
@@ -354,6 +373,7 @@
 				AB9CFFCF283E8E240036575F /* MapViewController.swift in Sources */,
 				ABBC1460285A3B9200BF0697 /* AuthViewController.swift in Sources */,
 				AB76601D286617E300BD7B2E /* AuthSample.swift in Sources */,
+				AB76602A28686D5200BD7B2E /* Text.swift in Sources */,
 				AB3AC32228511F49003FFAAB /* MapViewModel.swift in Sources */,
 				AB76602228677BB600BD7B2E /* UserAreaCell.swift in Sources */,
 				AB76601B28660B0900BD7B2E /* PasswordRecoveryViewController.swift in Sources */,
