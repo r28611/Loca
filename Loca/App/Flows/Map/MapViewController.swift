@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  Loca
 //
 //  Created by Margarita Novokhatskaia on 25/05/2022.
@@ -8,9 +8,9 @@
 import UIKit
 import GoogleMaps
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
     
-    private var beginBackgroundTask: UIBackgroundTaskIdentifier?
+    private var router: UserAreaRouter?
     private var mapViewModel: MapViewModel?
     
     @IBOutlet weak var mapView: GMSMapView!
@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         
         mapViewModel = MapViewModel(mapView: mapView)
         mapViewModel?.configureMap()
+        router = UserAreaRouter(viewController: self)
     }
     
     @IBAction private func getRouteDidTapped() {
@@ -37,6 +38,10 @@ class ViewController: UIViewController {
     
     @IBAction private func saveTrackDidTapped(_ sender: UIBarButtonItem) {
         mapViewModel?.saveTrack()
+    }
+    
+    @IBAction private func authDidTapped(_ sender: UIBarButtonItem) {
+        router?.navigateToController()
     }
     
     private func showAlert() {
