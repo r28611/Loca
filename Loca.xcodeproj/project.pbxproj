@@ -17,6 +17,7 @@
 		AB76602228677BB600BD7B2E /* UserAreaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76602128677BB600BD7B2E /* UserAreaCell.swift */; };
 		AB76602428677C9D00BD7B2E /* UserAreaSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76602328677C9D00BD7B2E /* UserAreaSettings.swift */; };
 		AB76602A28686D5200BD7B2E /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76602928686D5200BD7B2E /* Text.swift */; };
+		AB76602D286876B000BD7B2E /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB76602C286876B000BD7B2E /* BaseRouter.swift */; };
 		AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCA283E8E240036575F /* AppDelegate.swift */; };
 		AB9CFFCD283E8E240036575F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCC283E8E240036575F /* SceneDelegate.swift */; };
 		AB9CFFCF283E8E240036575F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCE283E8E240036575F /* MapViewController.swift */; };
@@ -28,6 +29,7 @@
 		ABBC14592853677400BF0697 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC14582853677400BF0697 /* RealmManager.swift */; };
 		ABBC1460285A3B9200BF0697 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC145F285A3B9200BF0697 /* AuthViewController.swift */; };
 		ABBC146A285C8FAA00BF0697 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC1469285C8FAA00BF0697 /* AuthView.swift */; };
+		ABE9C547286A62E800ADC36B /* UserAreaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE9C546286A62E800ADC36B /* UserAreaRouter.swift */; };
 		ABEDA64A28458DAE00DDC902 /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = ABEDA64928458DAE00DDC902 /* style.json */; };
 		ABEDA64C284671AB00DDC902 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDA64B284671AB00DDC902 /* Queue.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +46,7 @@
 		AB76602128677BB600BD7B2E /* UserAreaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAreaCell.swift; sourceTree = "<group>"; };
 		AB76602328677C9D00BD7B2E /* UserAreaSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAreaSettings.swift; sourceTree = "<group>"; };
 		AB76602928686D5200BD7B2E /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		AB76602C286876B000BD7B2E /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		AB9CFFC7283E8E240036575F /* Loca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9CFFCA283E8E240036575F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB9CFFCC283E8E240036575F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +60,7 @@
 		ABBC14582853677400BF0697 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		ABBC145F285A3B9200BF0697 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		ABBC1469285C8FAA00BF0697 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		ABE9C546286A62E800ADC36B /* UserAreaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAreaRouter.swift; sourceTree = "<group>"; };
 		ABEDA64928458DAE00DDC902 /* style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
 		ABEDA64B284671AB00DDC902 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		ACE16BF64FA0492E52DA5D40 /* Pods-Loca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loca.release.xcconfig"; path = "Target Support Files/Pods-Loca/Pods-Loca.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +118,7 @@
 		AB76602728686D3200BD7B2E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				ABBC145A28536A0600BF0697 /* Models */,
 				AB76602828686D4500BD7B2E /* Helpers */,
 			);
 			path = Common;
@@ -125,6 +130,15 @@
 				AB76602928686D5200BD7B2E /* Text.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		AB76602B2868769600BD7B2E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AB76602C286876B000BD7B2E /* BaseRouter.swift */,
+				ABE9C546286A62E800ADC36B /* UserAreaRouter.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		AB9CFFBE283E8E240036575F = {
@@ -148,8 +162,9 @@
 		AB9CFFC9283E8E240036575F /* Loca */ = {
 			isa = PBXGroup;
 			children = (
-				AB76602728686D3200BD7B2E /* Common */,
 				ABBC1464285A3C7D00BF0697 /* App */,
+				AB76602B2868769600BD7B2E /* Core */,
+				AB76602728686D3200BD7B2E /* Common */,
 				ABBC1465285A3CC500BF0697 /* Resources */,
 				ABBC1466285A3CF800BF0697 /* Environments */,
 				AB3AC3252851293C003FFAAB /* Utility */,
@@ -166,14 +181,14 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
-		ABBC145A28536A0600BF0697 /* Model */ = {
+		ABBC145A28536A0600BF0697 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				AB76601C286617E300BD7B2E /* AuthSample.swift */,
 				AB76602328677C9D00BD7B2E /* UserAreaSettings.swift */,
 				ABBC14572853659B00BF0697 /* Realm */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		ABBC1461285A3B9A00BF0697 /* Auth */ = {
@@ -213,7 +228,6 @@
 				AB9CFFCA283E8E240036575F /* AppDelegate.swift */,
 				AB9CFFCC283E8E240036575F /* SceneDelegate.swift */,
 				ABBC1462285A3C1200BF0697 /* Flows */,
-				ABBC145A28536A0600BF0697 /* Model */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -369,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE9C547286A62E800ADC36B /* UserAreaRouter.swift in Sources */,
 				AB3AC32428512910003FFAAB /* ChankedArray.swift in Sources */,
 				AB9CFFCF283E8E240036575F /* MapViewController.swift in Sources */,
 				ABBC1460285A3B9200BF0697 /* AuthViewController.swift in Sources */,
@@ -382,6 +397,7 @@
 				AB7660192866089100BD7B2E /* PasswordRecoveryView.swift in Sources */,
 				ABBC14592853677400BF0697 /* RealmManager.swift in Sources */,
 				AB7660202867763300BD7B2E /* UserAreaViewController.swift in Sources */,
+				AB76602D286876B000BD7B2E /* BaseRouter.swift in Sources */,
 				AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */,
 				AB9CFFCD283E8E240036575F /* SceneDelegate.swift in Sources */,
 				ABBC146A285C8FAA00BF0697 /* AuthView.swift in Sources */,

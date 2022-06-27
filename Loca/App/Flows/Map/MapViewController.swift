@@ -10,7 +10,7 @@ import GoogleMaps
 
 class MapViewController: UIViewController {
     
-    private var beginBackgroundTask: UIBackgroundTaskIdentifier?
+    private var router: UserAreaRouter?
     private var mapViewModel: MapViewModel?
     
     @IBOutlet weak var mapView: GMSMapView!
@@ -20,6 +20,7 @@ class MapViewController: UIViewController {
         
         mapViewModel = MapViewModel(mapView: mapView)
         mapViewModel?.configureMap()
+        router = UserAreaRouter(viewController: self)
     }
     
     @IBAction private func getRouteDidTapped() {
@@ -40,11 +41,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction private func authDidTapped(_ sender: UIBarButtonItem) {
-        if !UserDefaults.standard.bool(forKey: "isLogin") {
-            navigationController?.pushViewController(AuthViewController(), animated: true)
-        } else {
-            navigationController?.pushViewController(UserAreaViewController(), animated: true)
-        }
+        router?.navigateToController()
     }
     
     private func showAlert() {
