@@ -18,7 +18,9 @@ class UserAreaRouter: NSObject, Router {
     func navigateToController() {
         if !UserDefaults.standard.bool(forKey: "isLogin") {
             
-            controller?.navigationController?.pushViewController(AuthViewController(), animated: true)
+            let viewController = AuthViewController()
+            viewController.viewModel = AuthViewModelImpl(model: AuthInputModelImpl())
+            controller?.navigationController?.pushViewController(viewController, animated: true)
         
         } else {
             

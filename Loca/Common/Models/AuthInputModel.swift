@@ -15,7 +15,7 @@ protocol AuthInputModel {
 class AuthInputModelImpl: AuthInputModel {
     
     func isInputValid(login: String, password: String) -> Bool {
-        return password.count == passwordLength && !login.contains(" ")
+        return password.count >= passwordLength && !login.contains(" ")
     }
     
     var passwordLength: Int {

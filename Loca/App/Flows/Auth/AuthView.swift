@@ -11,6 +11,7 @@ class AuthView: UIView {
     
     var goButtonHandler: ((String?, String?) -> Void)?
     var passwordRecoveryButtonHandler: (() -> Void)?
+    var textFieldsDidChangedHandler: ((String?, String?) -> Void)?
     
     enum Constants {
         static let imageName = "prev-loca"
@@ -95,7 +96,7 @@ class AuthView: UIView {
         return textField
     }()
     
-    private let goButton: UIButton = {
+    let goButton: UIButton = {
         let button = UIButton(type: .system)
         button.titleLabel?.font = Constants.fontRegular
         button.tintColor = .white
@@ -202,6 +203,7 @@ class AuthView: UIView {
         setupConstraints()
         setupSignText()
         setButtonsActions()
+        setTextFieldsActions()
     }
     
     private func setupConstraints() {
@@ -273,6 +275,11 @@ class AuthView: UIView {
         passwordRecoveryButton.addTarget(self, action: #selector(passwordRecoveryButtonTapped), for: .touchUpInside)
     }
     
+    private func setTextFieldsActions() {
+        usernameTextField.addTarget(self, action: #selector(textFieldsDidChanged), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldsDidChanged), for: .editingChanged)
+    }
+    
     @objc private func toogleAccountState() {
         isAccountExist.toggle()
         setupSignText()
@@ -284,5 +291,9 @@ class AuthView: UIView {
     
     @objc private func passwordRecoveryButtonTapped() {
         passwordRecoveryButtonHandler?()
+    }
+    
+    @objc private func textFieldsDidChanged() {
+        textFieldsDidChangedHandler?(self.usernameTextField.text, self.passwordTextField.text)
     }
 }

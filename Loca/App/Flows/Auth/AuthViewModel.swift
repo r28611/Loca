@@ -9,7 +9,7 @@ import Foundation
 
 protocol AuthViewModel {
     var alertTitle: String { get }
-    func handleInputChanged(login: String, password: String)
+    func handleInputChanged(login: String?, password: String?)
     
     var submitButtonEnabled: Bool { get }
     var submitButtonEnabledChanged: ((Bool) -> ())? { get set }
@@ -27,7 +27,9 @@ class AuthViewModelImpl: AuthViewModel {
         return "Please input correct login and password (min \(model.passwordLength) simbols)"
     }
     
-    func handleInputChanged(login: String, password: String) {
+    func handleInputChanged(login: String?, password: String?) {
+        guard let login = login,
+              let password = password else { return }
         submitButtonEnabled = model.isInputValid(login: login, password: password)
     }
     
