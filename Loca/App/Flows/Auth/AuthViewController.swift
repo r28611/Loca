@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AuthViewController: UIViewController {
 
     private let authView = AuthView()
     var viewModel: AuthViewModel?
+    
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,15 +26,12 @@ class AuthViewController: UIViewController {
         
         authView.textFieldsDidChangedHandler = handleInputChanged.self
         
-        viewModel?.submitButtonEnabledChanged = { [unowned self] (enabled) in
-            self.authView.goButton.isEnabled = enabled
-        }
+        viewModel?.submitButtonEnabled.bind(to: authView.goButton.rx.isEnabled).disposed(by: disposeBag)
     }
     
     private func setupView() {
         view.backgroundColor = .white
         view = authView
-        authView.goButton.isEnabled = viewModel?.submitButtonEnabled ?? false
     }
     
     // MARK: Actions

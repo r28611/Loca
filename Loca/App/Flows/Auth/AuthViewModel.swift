@@ -6,13 +6,13 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol AuthViewModel {
     var alertTitle: String { get }
     func handleInputChanged(login: String?, password: String?)
     
-    var submitButtonEnabled: Bool { get }
-    var submitButtonEnabledChanged: ((Bool) -> ())? { get set }
+    var submitButtonEnabled: BehaviorSubject<Bool> { get }
 }
 
 class AuthViewModelImpl: AuthViewModel {
@@ -30,15 +30,10 @@ class AuthViewModelImpl: AuthViewModel {
     func handleInputChanged(login: String?, password: String?) {
         guard let login = login,
               let password = password else { return }
-        submitButtonEnabled = model.isInputValid(login: login, password: password)
+        
+        submitButtonEnabled.onNext(model.isInputValid(login: login, password: password))
     }
     
-    var submitButtonEnabled: Bool = false {
-        didSet {
-            submitButtonEnabledChanged?(submitButtonEnabled)
-        }
-    }
-    
-    var submitButtonEnabledChanged: ((Bool) -> ())?
+    var submitButtonEnabled: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     
 }
