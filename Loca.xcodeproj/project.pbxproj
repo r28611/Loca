@@ -172,6 +172,15 @@
 			path = Loca;
 			sourceTree = "<group>";
 		};
+		ABB60F572875E46000E34666 /* PasswordRecovery */ = {
+			isa = PBXGroup;
+			children = (
+				AB76601A28660B0900BD7B2E /* PasswordRecoveryViewController.swift */,
+				AB7660182866089100BD7B2E /* PasswordRecoveryView.swift */,
+			);
+			path = PasswordRecovery;
+			sourceTree = "<group>";
+		};
 		ABBC14572853659B00BF0697 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,9 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				ABBC1469285C8FAA00BF0697 /* AuthView.swift */,
-				AB7660182866089100BD7B2E /* PasswordRecoveryView.swift */,
 				ABBC145F285A3B9200BF0697 /* AuthViewController.swift */,
-				AB76601A28660B0900BD7B2E /* PasswordRecoveryViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -207,6 +214,7 @@
 			children = (
 				AB76601E2867761500BD7B2E /* UserArea */,
 				ABBC1461285A3B9A00BF0697 /* Auth */,
+				ABB60F572875E46000E34666 /* PasswordRecovery */,
 				ABBC1463285A3C2200BF0697 /* Map */,
 			);
 			path = Flows;
