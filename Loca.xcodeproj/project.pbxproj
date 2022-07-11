@@ -30,6 +30,7 @@
 		ABBC1460285A3B9200BF0697 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC145F285A3B9200BF0697 /* AuthViewController.swift */; };
 		ABBC146A285C8FAA00BF0697 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC1469285C8FAA00BF0697 /* AuthView.swift */; };
 		ABD35DAB287C5AB400D02F45 /* SceneBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD35DAA287C5AB400D02F45 /* SceneBlur.swift */; };
+		ABD35DAD287C7B4900D02F45 /* AuthInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD35DAC287C7B4900D02F45 /* AuthInputModel.swift */; };
 		ABE9C547286A62E800ADC36B /* UserAreaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE9C546286A62E800ADC36B /* UserAreaRouter.swift */; };
 		ABEDA64A28458DAE00DDC902 /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = ABEDA64928458DAE00DDC902 /* style.json */; };
 		ABEDA64C284671AB00DDC902 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABEDA64B284671AB00DDC902 /* Queue.swift */; };
@@ -62,6 +63,7 @@
 		ABBC145F285A3B9200BF0697 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		ABBC1469285C8FAA00BF0697 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		ABD35DAA287C5AB400D02F45 /* SceneBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneBlur.swift; sourceTree = "<group>"; };
+		ABD35DAC287C7B4900D02F45 /* AuthInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInputModel.swift; sourceTree = "<group>"; };
 		ABE9C546286A62E800ADC36B /* UserAreaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAreaRouter.swift; sourceTree = "<group>"; };
 		ABEDA64928458DAE00DDC902 /* style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
 		ABEDA64B284671AB00DDC902 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				AB76601C286617E300BD7B2E /* AuthSample.swift */,
 				AB76602328677C9D00BD7B2E /* UserAreaSettings.swift */,
 				ABBC14572853659B00BF0697 /* Realm */,
+				ABD35DAC287C7B4900D02F45 /* AuthInputModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				AB7660192866089100BD7B2E /* PasswordRecoveryView.swift in Sources */,
 				ABBC14592853677400BF0697 /* RealmManager.swift in Sources */,
 				AB7660202867763300BD7B2E /* UserAreaViewController.swift in Sources */,
+				ABD35DAD287C7B4900D02F45 /* AuthInputModel.swift in Sources */,
 				AB76602D286876B000BD7B2E /* BaseRouter.swift in Sources */,
 				ABD35DAB287C5AB400D02F45 /* SceneBlur.swift in Sources */,
 				AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */,
