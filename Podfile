@@ -7,6 +7,8 @@ target 'Loca' do
 
   pod 'GoogleMaps'
   pod 'RealmSwift', '~>10'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
   # Pods for Loca
 

@@ -6,21 +6,39 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class AuthViewController: UIViewController {
 
     private let authView = AuthView()
+    var viewModel: AuthViewModel?
+    
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         
-        view = authView
+        setupView()
+        
         authView.passwordRecoveryButtonHandler = passwordRecovery.self
         authView.goButtonHandler = auth.self
+        
+        authView.textFieldsDidChangedHandler = handleInputChanged.self
+        
+        viewModel?.submitButtonEnabled.bind(to: authView.goButton.rx.isEnabled).disposed(by: disposeBag)
+    }
+    
+    private func setupView() {
+        view.backgroundColor = .white
+        view = authView
     }
     
     // MARK: Actions
+    
+    private func handleInputChanged(username: String?, password: String?) {
+        viewModel?.handleInputChanged(login: username, password: password)
+    }
     
     private func auth(username: String?, password: String?) {
         guard let username = username,
