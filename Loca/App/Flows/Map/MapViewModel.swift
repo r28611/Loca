@@ -7,15 +7,16 @@
 
 import Foundation
 import GoogleMaps
+import RxSwift
 
 final class MapViewModel: NSObject {
     let mapView: GMSMapView
     private var geoCoder: CLGeocoder?
-    private var locationManager: CLLocationManager?
+    private var locationManager = LocationManager.instance
     private var markersQueue: Queue<GMSMarker>
     private var routePolyline: GMSPolyline?
     private var routePath: GMSMutablePath?
-    
+    private let disposeBag = DisposeBag()
     private let realmManager = RealmManager.shared
     
     init(mapView: GMSMapView) {
@@ -44,14 +45,21 @@ final class MapViewModel: NSObject {
     }
     
     private func configureLocationManager() {
-        if locationManager == nil {
-            locationManager = CLLocationManager()
+        locationManager
+            .location
+            .asObservable()
+            .bind { [weak self] location in
+                guard let location = location else { return }
+                
+                self?.routePath?.add(location.coordinate)
+
+                self?.routePath?.add(location.coordinate)
+                self?.routePolyline?.path = self?.routePath
+                
+                let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
+                self?.mapView.animate(to: position)
         }
-        locationManager?.delegate = self
-        locationManager?.requestAlwaysAuthorization()
-        locationManager?.allowsBackgroundLocationUpdates = true
-        locationManager?.pausesLocationUpdatesAutomatically = false
-        locationManager?.startMonitoringSignificantLocationChanges()
+            .disposed(by: disposeBag)
     }
     
     func drawPolylineByTappedMarkers() {
@@ -99,11 +107,11 @@ final class MapViewModel: NSObject {
         routePolyline = GMSPolyline()
         routePolyline?.map = mapView
         
-        locationManager?.startUpdatingLocation()
+        locationManager.startUpdatingLocation()
     }
     
     func stopTracking() {
-        locationManager?.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation()
         routePath = nil
     }
     
@@ -151,23 +159,5 @@ extension MapViewModel: GMSMapViewDelegate {
             let locationRealm: Location = Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             try? self.realmManager?.save(objects: [locationRealm])
         })
-    }
-}
-
-extension MapViewModel: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager,
-                         didUpdateLocations locations: [CLLocation]) {
-        
-        guard let location = locations.last else { return }
-        
-        routePath?.add(location.coordinate)
-        routePolyline?.path = routePath
-        
-        let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
-        mapView.animate(to: position)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
     }
 }
