@@ -10,7 +10,9 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var visualEffectView = UIVisualEffectView()
+    
+    private var sceneBlur = SceneBlur()
+    private var appSwitcherView = UIView()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -27,20 +29,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        self.visualEffectView.removeFromSuperview()
+        self.appSwitcherView.removeFromSuperview()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
-        if !self.visualEffectView.isDescendant(of: self.window!) {
-            let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-            self.visualEffectView = UIVisualEffectView(effect: blurEffect)
-            self.visualEffectView.frame = (self.window?.bounds)!
-            self.window?.addSubview(self.visualEffectView)
+        guard let window = self.window else { return }
+        if !self.appSwitcherView.isDescendant(of: window) {
+            self.appSwitcherView = sceneBlur.createBluredScreenshotOf(window: window)
+            self.window?.addSubview(self.appSwitcherView)
         }
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        self.visualEffectView.removeFromSuperview()
+        self.appSwitcherView.removeFromSuperview()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
