@@ -7,6 +7,7 @@ target 'Loca' do
 
   pod 'GoogleMaps'
   pod 'RealmSwift', '~>10'
+  pod 'Bond'
 
   # Pods for Loca
 

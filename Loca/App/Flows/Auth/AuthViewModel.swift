@@ -6,13 +6,13 @@
 //
 
 import Foundation
+import Bond
 
 protocol AuthViewModel {
+    var submitButtonEnabled: Observable<Bool> { get }
     var alertTitle: String { get }
-    func handleInputChanged(login: String?, password: String?)
     
-    var submitButtonEnabled: Bool { get }
-    var submitButtonEnabledChanged: ((Bool) -> ())? { get set }
+    func handleInputChanged(login: String?, password: String?)
 }
 
 class AuthViewModelImpl: AuthViewModel {
@@ -23,6 +23,8 @@ class AuthViewModelImpl: AuthViewModel {
         self.model = model
     }
     
+    var submitButtonEnabled: Observable<Bool> = Observable<Bool>(false)
+    
     var alertTitle: String {
         return "Please input correct login and password (min \(model.passwordLength) simbols)"
     }
@@ -30,15 +32,7 @@ class AuthViewModelImpl: AuthViewModel {
     func handleInputChanged(login: String?, password: String?) {
         guard let login = login,
               let password = password else { return }
-        submitButtonEnabled = model.isInputValid(login: login, password: password)
+        submitButtonEnabled.value = model.isInputValid(login: login, password: password)
     }
-    
-    var submitButtonEnabled: Bool = false {
-        didSet {
-            submitButtonEnabledChanged?(submitButtonEnabled)
-        }
-    }
-    
-    var submitButtonEnabledChanged: ((Bool) -> ())?
     
 }

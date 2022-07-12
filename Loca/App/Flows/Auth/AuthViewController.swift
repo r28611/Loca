@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Bond
 
 class AuthViewController: UIViewController {
 
@@ -21,16 +22,12 @@ class AuthViewController: UIViewController {
         authView.goButtonHandler = auth.self
         
         authView.textFieldsDidChangedHandler = handleInputChanged.self
-        
-        viewModel?.submitButtonEnabledChanged = { [unowned self] (enabled) in
-            self.authView.goButton.isEnabled = enabled
-        }
     }
     
     private func setupView() {
         view.backgroundColor = .white
         view = authView
-        authView.goButton.isEnabled = viewModel?.submitButtonEnabled ?? false
+        viewModel?.submitButtonEnabled.bind(to: authView.goButton.reactive.isEnabled)
     }
     
     // MARK: Actions

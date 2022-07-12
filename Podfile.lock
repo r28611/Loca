@@ -1,9 +1,14 @@
 PODS:
+  - Bond (7.8.1):
+    - Differ (~> 1.4)
+    - ReactiveKit (~> 3.14)
+  - Differ (1.4.5)
   - GoogleMaps (6.2.1):
     - GoogleMaps/Maps (= 6.2.1)
   - GoogleMaps/Base (6.2.1)
   - GoogleMaps/Maps (6.2.1):
     - GoogleMaps/Base
+  - ReactiveKit (3.19.1)
   - Realm (10.28.0):
     - Realm/Headers (= 10.28.0)
   - Realm/Headers (10.28.0)
@@ -11,20 +16,27 @@ PODS:
     - Realm (= 10.28.0)
 
 DEPENDENCIES:
+  - Bond
   - GoogleMaps
   - RealmSwift (~> 10)
 
 SPEC REPOS:
   trunk:
+    - Bond
+    - Differ
     - GoogleMaps
+    - ReactiveKit
     - Realm
     - RealmSwift
 
 SPEC CHECKSUMS:
+  Bond: 87075c7f20f37ea3e73dc7057fce839787bf46eb
+  Differ: 3b6bd78e2b20cc795d9a86f7641d087524e4273e
   GoogleMaps: 20d7b12be49a14287f797e88e0e31bc4156aaeb4
+  ReactiveKit: a36ebeb959fe6852dd674cc423163bfffb7e0541
   Realm: a0dd4e07530faaa327244ddb4ecb445c98f0537a
   RealmSwift: 625a21f03e01e80f6b9b86bade269ebebcd7892c
 
-PODFILE CHECKSUM: 51b10408fc4db501935badee73f3acc7a1e34104
+PODFILE CHECKSUM: cf8773744d016c53b6afea62da8d4f1840c12bb0
 
 COCOAPODS: 1.11.2
