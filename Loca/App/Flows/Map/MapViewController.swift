@@ -18,7 +18,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mapViewModel = MapViewModel(mapView: mapView)
+        mapViewModel = MapViewModelImpl(mapView: mapView)
         mapViewModel?.configureMap()
         router = UserAreaRouter(viewController: self)
     }

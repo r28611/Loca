@@ -8,15 +8,24 @@
 import Foundation
 import GoogleMaps
 
-final class MapViewModel: NSObject {
+protocol MapViewModel {
+    func handleLocationChanged(location: CLLocation?)
+    func configureMap()
+    func startTracking()
+    func stopTracking()
+    func saveTrack()
+    func drawPolylineByTappedMarkers()
+}
+
+final class MapViewModelImpl: NSObject, MapViewModel {
     let mapView: GMSMapView
     private var geoCoder: CLGeocoder?
-    private var locationManager: CLLocationManager?
     private var markersQueue: Queue<GMSMarker>
     private var routePolyline: GMSPolyline?
     private var routePath: GMSMutablePath?
     
     private let realmManager = RealmManager.shared
+    private let locationManager = LocationManager.instance
     
     init(mapView: GMSMapView) {
         self.mapView = mapView
@@ -43,15 +52,19 @@ final class MapViewModel: NSObject {
         configureLocationManager()
     }
     
-    private func configureLocationManager() {
-        if locationManager == nil {
-            locationManager = CLLocationManager()
-        }
-        locationManager?.delegate = self
-        locationManager?.requestAlwaysAuthorization()
-        locationManager?.allowsBackgroundLocationUpdates = true
-        locationManager?.pausesLocationUpdatesAutomatically = false
-        locationManager?.startMonitoringSignificantLocationChanges()
+    func configureLocationManager() {
+        locationManager.locationChangedHandler = handleLocationChanged(location:).self
+    }
+    
+    func handleLocationChanged(location: CLLocation?) {
+        
+        guard let location = location else { return }
+        
+        routePath?.add(location.coordinate)
+        routePolyline?.path = routePath
+        
+        let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
+        mapView.animate(to: position)
     }
     
     func drawPolylineByTappedMarkers() {
@@ -99,11 +112,11 @@ final class MapViewModel: NSObject {
         routePolyline = GMSPolyline()
         routePolyline?.map = mapView
         
-        locationManager?.startUpdatingLocation()
+        locationManager.startUpdatingLocation()
     }
     
     func stopTracking() {
-        locationManager?.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation()
         routePath = nil
     }
     
@@ -128,7 +141,7 @@ final class MapViewModel: NSObject {
     }
 }
 
-extension MapViewModel: GMSMapViewDelegate {
+extension MapViewModelImpl: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         let marker = GMSMarker(position: coordinate)
         marker.map = mapView
@@ -151,23 +164,5 @@ extension MapViewModel: GMSMapViewDelegate {
             let locationRealm: Location = Location(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             try? self.realmManager?.save(objects: [locationRealm])
         })
-    }
-}
-
-extension MapViewModel: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager,
-                         didUpdateLocations locations: [CLLocation]) {
-        
-        guard let location = locations.last else { return }
-        
-        routePath?.add(location.coordinate)
-        routePolyline?.path = routePath
-        
-        let position = GMSCameraPosition.camera(withTarget: location.coordinate, zoom: 15)
-        mapView.animate(to: position)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
     }
 }
