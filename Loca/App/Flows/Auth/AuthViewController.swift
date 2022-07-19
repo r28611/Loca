@@ -8,7 +8,7 @@
 import UIKit
 
 class AuthViewController: UIViewController {
-
+    //нашла с помощью Leaks, что у меня при переходе на этот контроллер каждый раз он создается заново, а старый остается в памяти
     private let authView = AuthView()
     var viewModel: AuthViewModel?
     
