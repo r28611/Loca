@@ -12,6 +12,7 @@ class MapViewController: UIViewController {
     
     private var router: Router?
     private var mapViewModel: MapViewModel?
+    private var state: MapState = InitialState()
     
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -28,20 +29,29 @@ class MapViewController: UIViewController {
     }
     
     @IBAction private func startTrackDidTapped(_ sender: UIBarButtonItem) {
-        showAlert()
-        mapViewModel?.startTracking()
+        guard let viewModel = mapViewModel else { return }
+        state.startTracking(viewModel: viewModel)
+        set(state: TrackingStarted())
     }
     
     @IBAction private func stopTrackDidTapped(_ sender: UIBarButtonItem) {
-        mapViewModel?.stopTracking()
+        guard let viewModel = mapViewModel else { return }
+        state.stopTracking(viewModel: viewModel)
+        set(state: TrackingFinished())
     }
     
     @IBAction private func saveTrackDidTapped(_ sender: UIBarButtonItem) {
-        mapViewModel?.saveTrack()
+        guard let viewModel = mapViewModel else { return }
+        state.saveRoute(viewModel: viewModel)
+        set(state: InitialState())
     }
     
     @IBAction private func authDidTapped(_ sender: UIBarButtonItem) {
         router?.navigateToUserArea()
+    }
+    
+    private func set(state: MapState) {
+        self.state = state
     }
     
     private func showAlert() {
