@@ -8,5 +8,7 @@
 import UIKit
 
 protocol Router: NSObject {
-    func navigateToController()
+    func navigateToUserArea()
+    func makeAlert(complitionFirstAction: (() -> Void)?,
+                   complitionSecondAction: (() -> Void)?) -> UIAlertController
 }

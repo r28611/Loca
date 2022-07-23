@@ -10,7 +10,7 @@ import GoogleMaps
 
 class MapViewController: UIViewController {
     
-    private var router: UserAreaRouter?
+    private var router: Router?
     private var mapViewModel: MapViewModel?
     
     @IBOutlet weak var mapView: GMSMapView!
@@ -20,7 +20,7 @@ class MapViewController: UIViewController {
         
         mapViewModel = MapViewModelImpl(mapView: mapView)
         mapViewModel?.configureMap()
-        router = UserAreaRouter(viewController: self)
+        router = MapRouter(viewController: self)
     }
     
     @IBAction private func getRouteDidTapped() {
@@ -41,24 +41,19 @@ class MapViewController: UIViewController {
     }
     
     @IBAction private func authDidTapped(_ sender: UIBarButtonItem) {
-        router?.navigateToController()
+        router?.navigateToUserArea()
     }
     
     private func showAlert() {
         
-        let alertController = UIAlertController(title: "Start a new track",
-                                                message: "Do you want to start a new track and save the current one?",
-                                                preferredStyle: .alert)
-        let createButton = UIAlertAction(title: "Save and start", style: .default) { [weak self] _ in
+        guard let router = router else { return }
+        
+        let alert = router.makeAlert(complitionFirstAction: { [weak self] in
             self?.mapViewModel?.saveTrack()
             self?.mapViewModel?.startTracking()
-        }
-        
-        let cancelButton = UIAlertAction(title: "Start without saving", style: .destructive) { [weak self] _ in
+        }, complitionSecondAction: { [weak self] in
             self?.mapViewModel?.startTracking()
-        }
-        
-        alertController.addAction(createButton)
-        alertController.addAction(cancelButton)
-        self.present(alertController, animated: true, completion: nil) }
+        })
+
+        self.present(alert, animated: true, completion: nil) }
 }

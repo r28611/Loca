@@ -25,4 +25,8 @@ enum Text {
     static let notification = "Notification"
     static let logout = "Logout"
     static let settings = "Settings"
+    static let startNewTrack = "Start a new track"
+    static let startNewTrackDescription = "Do you want to start a new track and save the current one?"
+    static let saveAndStart = "Save and start"
+    static let startWithoutSaving = "Start without saving"
 }
