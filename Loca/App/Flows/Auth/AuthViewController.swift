@@ -8,7 +8,7 @@
 import UIKit
 
 class AuthViewController: UIViewController {
-
+    //нашла с помощью Leaks, что у меня при переходе на этот контроллер каждый раз он создается заново, а старый остается в памяти
     private let authView = AuthView()
     var viewModel: AuthViewModel?
     
@@ -17,10 +17,17 @@ class AuthViewController: UIViewController {
         
         setupView()
         
-        authView.passwordRecoveryButtonHandler = passwordRecovery.self
-        authView.goButtonHandler = auth.self
+        authView.passwordRecoveryButtonHandler = { [weak self] in
+            self?.passwordRecovery()
+        }
         
-        authView.textFieldsDidChangedHandler = handleInputChanged.self
+        authView.goButtonHandler = { [weak self] (username, password) in
+            self?.auth(username: username, password: password)
+        }
+        
+        authView.textFieldsDidChangedHandler = { [weak self] (username, password) in
+            self?.handleInputChanged(username: username, password: password)
+        }
         
         viewModel?.submitButtonEnabledChanged = { [unowned self] (enabled) in
             self.authView.goButton.isEnabled = enabled
@@ -48,10 +55,6 @@ class AuthViewController: UIViewController {
             UserDefaults.standard.set(true, forKey: "isLogin")
             navigationController?.popViewController(animated: true)
         }
-    }
-    
-    private func register() {
-        
     }
     
     private func passwordRecovery() {
