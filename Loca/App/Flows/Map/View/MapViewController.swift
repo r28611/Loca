@@ -8,45 +8,46 @@
 import UIKit
 import GoogleMaps
 
-class MapViewController: UIViewController {
+class MapViewController: UITabBarController {
     
     private var router: Router?
     private var mapViewModel: MapViewModel?
     private var state: MapState = InitialState()
     
-    @IBOutlet weak var mapView: GMSMapView!
+    var mapView = GMSMapView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view = mapView
         
         mapViewModel = MapViewModelImpl(mapView: mapView)
         mapViewModel?.configureMap()
         router = MapRouter(viewController: self)
     }
     
-    @IBAction private func getRouteDidTapped() {
+    private func getRouteDidTapped() {
         mapViewModel?.drawPolylineByTappedMarkers()
     }
     
-    @IBAction private func startTrackDidTapped(_ sender: UIBarButtonItem) {
+    private func startTrackDidTapped(_ sender: UIBarButtonItem) {
         guard let viewModel = mapViewModel else { return }
         state.startTracking(viewModel: viewModel)
         set(state: TrackingStarted())
     }
     
-    @IBAction private func stopTrackDidTapped(_ sender: UIBarButtonItem) {
+    private func stopTrackDidTapped(_ sender: UIBarButtonItem) {
         guard let viewModel = mapViewModel else { return }
         state.stopTracking(viewModel: viewModel)
         set(state: TrackingFinished())
     }
     
-    @IBAction private func saveTrackDidTapped(_ sender: UIBarButtonItem) {
+    private func saveTrackDidTapped(_ sender: UIBarButtonItem) {
         guard let viewModel = mapViewModel else { return }
         state.saveRoute(viewModel: viewModel)
         set(state: InitialState())
     }
     
-    @IBAction private func authDidTapped(_ sender: UIBarButtonItem) {
+    private func authDidTapped(_ sender: UIBarButtonItem) {
         router?.navigateToUserArea()
     }
     
