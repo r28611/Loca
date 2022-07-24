@@ -26,6 +26,7 @@
 		AB9CFFCF283E8E240036575F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9CFFCE283E8E240036575F /* MapViewController.swift */; };
 		AB9CFFD4283E8E270036575F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9CFFD3283E8E270036575F /* Assets.xcassets */; };
 		AB9CFFD7283E8E270036575F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB9CFFD5283E8E270036575F /* LaunchScreen.storyboard */; };
+		ABA6C7FF288DDF49008DA26B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C7FE288DDF49008DA26B /* TabBarController.swift */; };
 		ABBC14542853647100BF0697 /* LocationRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC14532853647100BF0697 /* LocationRealm.swift */; };
 		ABBC1456285364F100BF0697 /* RouteRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC1455285364F100BF0697 /* RouteRealm.swift */; };
 		ABBC14592853677400BF0697 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC14582853677400BF0697 /* RealmManager.swift */; };
@@ -62,6 +63,7 @@
 		AB9CFFD3283E8E270036575F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB9CFFD6283E8E270036575F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB9CFFD8283E8E270036575F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABA6C7FE288DDF49008DA26B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		ABBC14532853647100BF0697 /* LocationRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRealm.swift; sourceTree = "<group>"; };
 		ABBC1455285364F100BF0697 /* RouteRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRealm.swift; sourceTree = "<group>"; };
 		ABBC14582853677400BF0697 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -202,6 +204,14 @@
 			path = Loca;
 			sourceTree = "<group>";
 		};
+		ABA6C7FD288DDF17008DA26B /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				ABA6C7FE288DDF49008DA26B /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		ABB60F572875E46000E34666 /* PasswordRecovery */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +254,7 @@
 		ABBC1462285A3C1200BF0697 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				ABA6C7FD288DDF17008DA26B /* TabBar */,
 				AB76601E2867761500BD7B2E /* UserArea */,
 				ABBC1461285A3B9A00BF0697 /* Auth */,
 				ABB60F572875E46000E34666 /* PasswordRecovery */,
@@ -424,6 +435,7 @@
 				ABE9C547286A62E800ADC36B /* UserAreaRouter.swift in Sources */,
 				AB3AC32428512910003FFAAB /* ChankedArray.swift in Sources */,
 				AB85E6F0288C39FD0010FEE2 /* MapRouter.swift in Sources */,
+				ABA6C7FF288DDF49008DA26B /* TabBarController.swift in Sources */,
 				AB9CFFCF283E8E240036575F /* MapViewController.swift in Sources */,
 				AB85E6F4288C73930010FEE2 /* MapState.swift in Sources */,
 				ABBC1460285A3B9200BF0697 /* AuthViewController.swift in Sources */,
