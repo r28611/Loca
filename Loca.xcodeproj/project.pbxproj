@@ -27,6 +27,7 @@
 		AB9CFFD4283E8E270036575F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9CFFD3283E8E270036575F /* Assets.xcassets */; };
 		AB9CFFD7283E8E270036575F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB9CFFD5283E8E270036575F /* LaunchScreen.storyboard */; };
 		ABA6C7FF288DDF49008DA26B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C7FE288DDF49008DA26B /* TabBarController.swift */; };
+		ABA6C801288DEC60008DA26B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C800288DEC60008DA26B /* CustomTabBar.swift */; };
 		ABBC14542853647100BF0697 /* LocationRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC14532853647100BF0697 /* LocationRealm.swift */; };
 		ABBC1456285364F100BF0697 /* RouteRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC1455285364F100BF0697 /* RouteRealm.swift */; };
 		ABBC14592853677400BF0697 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC14582853677400BF0697 /* RealmManager.swift */; };
@@ -64,6 +65,7 @@
 		AB9CFFD6283E8E270036575F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB9CFFD8283E8E270036575F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABA6C7FE288DDF49008DA26B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		ABA6C800288DEC60008DA26B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		ABBC14532853647100BF0697 /* LocationRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRealm.swift; sourceTree = "<group>"; };
 		ABBC1455285364F100BF0697 /* RouteRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRealm.swift; sourceTree = "<group>"; };
 		ABBC14582853677400BF0697 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				ABA6C7FE288DDF49008DA26B /* TabBarController.swift */,
+				ABA6C800288DEC60008DA26B /* CustomTabBar.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				ABBC14542853647100BF0697 /* LocationRealm.swift in Sources */,
 				AB7660192866089100BD7B2E /* PasswordRecoveryView.swift in Sources */,
 				ABBC14592853677400BF0697 /* RealmManager.swift in Sources */,
+				ABA6C801288DEC60008DA26B /* CustomTabBar.swift in Sources */,
 				AB7660202867763300BD7B2E /* UserAreaViewController.swift in Sources */,
 				ABD35DAD287C7B4900D02F45 /* AuthInputModel.swift in Sources */,
 				AB76602D286876B000BD7B2E /* BaseRouter.swift in Sources */,
