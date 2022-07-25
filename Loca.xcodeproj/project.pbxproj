@@ -30,6 +30,10 @@
 		ABA6C801288DEC60008DA26B /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C800288DEC60008DA26B /* CustomTabBar.swift */; };
 		ABA6C803288EF8E9008DA26B /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C802288EF8E9008DA26B /* AppColors.swift */; };
 		ABA6C805288EF9F7008DA26B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABA6C804288EF9F7008DA26B /* Colors.xcassets */; };
+		ABA6C809288F2482008DA26B /* RoutesListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C808288F2482008DA26B /* RoutesListController.swift */; };
+		ABA6C80B288F2518008DA26B /* RoutesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C80A288F2518008DA26B /* RoutesListView.swift */; };
+		ABA6C80D288F256A008DA26B /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C80C288F256A008DA26B /* RouteCell.swift */; };
+		ABA6C80F288F25E6008DA26B /* RouteCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA6C80E288F25E6008DA26B /* RouteCellView.swift */; };
 		ABBC14542853647100BF0697 /* LocationRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC14532853647100BF0697 /* LocationRealm.swift */; };
 		ABBC1456285364F100BF0697 /* RouteRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC1455285364F100BF0697 /* RouteRealm.swift */; };
 		ABBC14592853677400BF0697 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC14582853677400BF0697 /* RealmManager.swift */; };
@@ -70,6 +74,10 @@
 		ABA6C800288DEC60008DA26B /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		ABA6C802288EF8E9008DA26B /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		ABA6C804288EF9F7008DA26B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		ABA6C808288F2482008DA26B /* RoutesListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesListController.swift; sourceTree = "<group>"; };
+		ABA6C80A288F2518008DA26B /* RoutesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesListView.swift; sourceTree = "<group>"; };
+		ABA6C80C288F256A008DA26B /* RouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
+		ABA6C80E288F25E6008DA26B /* RouteCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteCellView.swift; sourceTree = "<group>"; };
 		ABBC14532853647100BF0697 /* LocationRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRealm.swift; sourceTree = "<group>"; };
 		ABBC1455285364F100BF0697 /* RouteRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteRealm.swift; sourceTree = "<group>"; };
 		ABBC14582853677400BF0697 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
@@ -220,6 +228,17 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		ABA6C806288F245A008DA26B /* RoutesList */ = {
+			isa = PBXGroup;
+			children = (
+				ABA6C808288F2482008DA26B /* RoutesListController.swift */,
+				ABA6C80A288F2518008DA26B /* RoutesListView.swift */,
+				ABA6C80C288F256A008DA26B /* RouteCell.swift */,
+				ABA6C80E288F25E6008DA26B /* RouteCellView.swift */,
+			);
+			path = RoutesList;
+			sourceTree = "<group>";
+		};
 		ABB60F572875E46000E34666 /* PasswordRecovery */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +281,7 @@
 		ABBC1462285A3C1200BF0697 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				ABA6C806288F245A008DA26B /* RoutesList */,
 				ABA6C7FD288DDF17008DA26B /* TabBar */,
 				AB76601E2867761500BD7B2E /* UserArea */,
 				ABBC1461285A3B9A00BF0697 /* Auth */,
@@ -443,6 +463,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE9C547286A62E800ADC36B /* UserAreaRouter.swift in Sources */,
+				ABA6C80F288F25E6008DA26B /* RouteCellView.swift in Sources */,
+				ABA6C80B288F2518008DA26B /* RoutesListView.swift in Sources */,
 				AB3AC32428512910003FFAAB /* ChankedArray.swift in Sources */,
 				AB85E6F0288C39FD0010FEE2 /* MapRouter.swift in Sources */,
 				ABA6C7FF288DDF49008DA26B /* TabBarController.swift in Sources */,
@@ -463,8 +485,10 @@
 				AB7660202867763300BD7B2E /* UserAreaViewController.swift in Sources */,
 				ABD35DAD287C7B4900D02F45 /* AuthInputModel.swift in Sources */,
 				AB76602D286876B000BD7B2E /* BaseRouter.swift in Sources */,
+				ABA6C809288F2482008DA26B /* RoutesListController.swift in Sources */,
 				ABD35DAB287C5AB400D02F45 /* SceneBlur.swift in Sources */,
 				ABD35DAF287C86CE00D02F45 /* AuthViewModel.swift in Sources */,
+				ABA6C80D288F256A008DA26B /* RouteCell.swift in Sources */,
 				AB9CFFCB283E8E240036575F /* AppDelegate.swift in Sources */,
 				AB9CFFCD283E8E240036575F /* SceneDelegate.swift in Sources */,
 				AB85E6EC287DA4550010FEE2 /* LocationManager.swift in Sources */,

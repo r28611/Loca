@@ -21,9 +21,9 @@ class TabBarController: UITabBarController {
     
     private func setupViewControllers() {
         
-        // Get route button
-        let tabOne = UserAreaViewController()
-        let tabOneBarItem = UITabBarItem(title: "Get route", image: UIImage(systemName: "location.circle"), tag: 1)
+        // Routes list button
+        let tabOne = RoutesListController()
+        let tabOneBarItem = UITabBarItem(title: "Routes", image: UIImage(systemName: "location.circle"), tag: 1)
         tabOne.tabBarItem = tabOneBarItem
         
         // Start/stop button
@@ -33,7 +33,7 @@ class TabBarController: UITabBarController {
         
         // user area
         let tabThree = UserAreaViewController()
-        let tabThreeBarItem = UITabBarItem(title: "User area", image: UIImage(systemName: "person.circle"), tag: 3)
+        let tabThreeBarItem = UITabBarItem(title: "You", image: UIImage(systemName: "person.circle"), tag: 3)
         tabThree.tabBarItem = tabThreeBarItem
         
         viewControllers = [tabOne, tabTwo, tabThree]
