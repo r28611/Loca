@@ -8,6 +8,9 @@
 import UIKit
 
 final class CustomTabBar: UITabBar {
+    
+    var middleButtonHandler: (() -> Void)?
+    
     // MARK: - Properties
     
     private var tabBarWidth: CGFloat { self.bounds.width }
@@ -17,6 +20,25 @@ final class CustomTabBar: UITabBar {
     
     private var shapeLayer: CALayer? = nil
     private var circleLayer: CALayer? = nil
+    
+    private let middleButtonDiameter: CGFloat = 42
+
+    private lazy var middleButton: UIButton = {
+        let middleButton = UIButton()
+        middleButton.layer.cornerRadius = middleButtonDiameter / 2
+        middleButton.backgroundColor = .white
+        middleButton.translatesAutoresizingMaskIntoConstraints = false
+        middleButton.addTarget(self, action: #selector(didPressMiddleButton), for: .touchUpInside)
+        return middleButton
+    }()
+    
+    private lazy var heartImageView: UIImageView = {
+        let heartImageView = UIImageView()
+        heartImageView.image = UIImage(systemName: "record.circle")
+        heartImageView.tintColor = .red
+        heartImageView.translatesAutoresizingMaskIntoConstraints = false
+        return heartImageView
+    }()
     
     // MARK: - Overriden Methods
     
@@ -38,6 +60,34 @@ final class CustomTabBar: UITabBar {
     }
     
     // MARK: - Private Methods
+    
+    @objc private func didPressMiddleButton() {
+        middleButtonHandler?()
+    }
+    
+    private func makeUI() {
+
+        addSubview(middleButton)
+        middleButton.addSubview(heartImageView)
+        
+        NSLayoutConstraint.activate([
+
+            middleButton.heightAnchor.constraint(equalToConstant: middleButtonDiameter),
+            middleButton.widthAnchor.constraint(equalToConstant: middleButtonDiameter),
+
+            middleButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            middleButton.topAnchor.constraint(equalTo: topAnchor, constant: -10)
+        ])
+        
+        NSLayoutConstraint.activate([
+
+            heartImageView.heightAnchor.constraint(equalToConstant: 26),
+            heartImageView.widthAnchor.constraint(equalToConstant: 26),
+
+            heartImageView.centerXAnchor.constraint(equalTo: middleButton.centerXAnchor),
+            heartImageView.centerYAnchor.constraint(equalTo: middleButton.centerYAnchor)
+        ])
+    }
     
     private func drawTabBar() {
         
@@ -67,6 +117,8 @@ final class CustomTabBar: UITabBar {
 
         self.shapeLayer = shapeLayer
         self.circleLayer = circleLayer
+        
+        makeUI()
     }
     
     private func shapePath() -> CGPath {
