@@ -1,13 +1,13 @@
 //
-//  UserAreaRouter.swift
+//  MapRouter.swift
 //  Loca
 //
-//  Created by Margarita Novokhatskaia on 28/06/2022.
+//  Created by Margarita Novokhatskaia on 23/07/2022.
 //
 
 import UIKit
 
-class UserAreaRouter: NSObject, Router {
+class MapRouter: NSObject, Router {
     
     weak var controller: UIViewController?
     
@@ -32,14 +32,14 @@ class UserAreaRouter: NSObject, Router {
     func makeAlert(complitionFirstAction: (() -> Void)? = nil,
                    complitionSecondAction: (() -> Void)? = nil) -> UIAlertController {
         
-        let alertController = UIAlertController(title: "",
-                                                message: "",
+        let alertController = UIAlertController(title: Text.startNewTrack,
+                                                message: Text.startNewTrackDescription,
                                                 preferredStyle: .alert)
-        let createButton = UIAlertAction(title: "", style: .default) { _ in
+        let createButton = UIAlertAction(title: Text.saveAndStart, style: .default) { _ in
             complitionFirstAction?()
         }
         
-        let cancelButton = UIAlertAction(title: "", style: .destructive) { _ in
+        let cancelButton = UIAlertAction(title: Text.startWithoutSaving, style: .destructive) { _ in
             complitionSecondAction?()
         }
         
