@@ -26,16 +26,16 @@ final class CustomTabBar: UITabBar {
     private lazy var middleButton: UIButton = {
         let middleButton = UIButton()
         middleButton.layer.cornerRadius = middleButtonDiameter / 2
-        middleButton.backgroundColor = .white
+        middleButton.backgroundColor = AppColors.background
         middleButton.translatesAutoresizingMaskIntoConstraints = false
         middleButton.addTarget(self, action: #selector(didPressMiddleButton), for: .touchUpInside)
         return middleButton
     }()
     
-    private lazy var heartImageView: UIImageView = {
+    private lazy var middleButtonImageView: UIImageView = {
         let heartImageView = UIImageView()
         heartImageView.image = UIImage(systemName: "record.circle")
-        heartImageView.tintColor = .red
+        heartImageView.tintColor = AppColors.pink
         heartImageView.translatesAutoresizingMaskIntoConstraints = false
         return heartImageView
     }()
@@ -66,9 +66,13 @@ final class CustomTabBar: UITabBar {
     }
     
     private func makeUI() {
+        
+        let appearance = UITabBarAppearance()
+        setTabBarItemColors(appearance.stackedLayoutAppearance)
+        standardAppearance = appearance
 
         addSubview(middleButton)
-        middleButton.addSubview(heartImageView)
+        middleButton.addSubview(middleButtonImageView)
         
         NSLayoutConstraint.activate([
 
@@ -81,26 +85,34 @@ final class CustomTabBar: UITabBar {
         
         NSLayoutConstraint.activate([
 
-            heartImageView.heightAnchor.constraint(equalToConstant: 26),
-            heartImageView.widthAnchor.constraint(equalToConstant: 26),
+            middleButtonImageView.heightAnchor.constraint(equalToConstant: 26),
+            middleButtonImageView.widthAnchor.constraint(equalToConstant: 26),
 
-            heartImageView.centerXAnchor.constraint(equalTo: middleButton.centerXAnchor),
-            heartImageView.centerYAnchor.constraint(equalTo: middleButton.centerYAnchor)
+            middleButtonImageView.centerXAnchor.constraint(equalTo: middleButton.centerXAnchor),
+            middleButtonImageView.centerYAnchor.constraint(equalTo: middleButton.centerYAnchor)
         ])
+    }
+    
+    private func setTabBarItemColors(_ itemAppearance: UITabBarItemAppearance) {
+        itemAppearance.normal.iconColor = AppColors.lightGray
+        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        
+        itemAppearance.selected.iconColor = AppColors.cian
+        itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppColors.cian]
     }
     
     private func drawTabBar() {
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = shapePath()
-        shapeLayer.strokeColor = UIColor.lightGray.cgColor
-        shapeLayer.fillColor = UIColor.white.cgColor
+        shapeLayer.strokeColor = AppColors.lightGray.cgColor
+        shapeLayer.fillColor = AppColors.background.cgColor
         shapeLayer.lineWidth = 1.0
 
         let circleLayer = CAShapeLayer()
         circleLayer.path = circlePath()
-        circleLayer.strokeColor = UIColor.lightGray.cgColor
-        circleLayer.fillColor = UIColor.white.cgColor
+        circleLayer.strokeColor = AppColors.lightGray.cgColor
+        circleLayer.fillColor = AppColors.background.cgColor
         circleLayer.lineWidth = 1.0
 
         if let oldShapeLayer = self.shapeLayer {
