@@ -61,7 +61,11 @@ final class CustomTabBar: UITabBar {
     
     // MARK: - Private Methods
     
-    @objc private func didPressMiddleButton() {
+    @objc private func didPressMiddleButton(_ sender: UIButton, forEvent event: UIEvent?) {
+        let touch: UITouch = (event?.allTouches!.first!)!
+        if touch.tapCount == 2 {
+            print("DOUBLE TAP")
+        }
         middleButtonHandler?()
     }
     
