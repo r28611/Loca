@@ -10,6 +10,7 @@ import UIKit
 final class CustomTabBar: UITabBar {
     
     var middleButtonHandler: (() -> Void)?
+    var doubleTapHandler: (() -> Void)?
     
     // MARK: - Properties
     
@@ -62,11 +63,15 @@ final class CustomTabBar: UITabBar {
     // MARK: - Private Methods
     
     @objc private func didPressMiddleButton(_ sender: UIButton, forEvent event: UIEvent?) {
-        let touch: UITouch = (event?.allTouches!.first!)!
-        if touch.tapCount == 2 {
-            print("DOUBLE TAP")
-        }
+        
+        guard let event = event else { return }
+        
         middleButtonHandler?()
+        
+        let touch: UITouch = event.allTouches!.first!
+        if touch.tapCount == 2 {
+            doubleTapHandler?()
+        }
     }
     
     private func makeUI() {

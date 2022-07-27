@@ -46,6 +46,11 @@ class TabBarController: UITabBarController {
             customTabBar.middleButtonHandler = { [ weak self ] in
                 self?.selectedIndex = 1
             }
+            customTabBar.doubleTapHandler = { [ weak self ] in
+                if let map = self?.viewControllers?[1] as? MapViewController {
+                    map.startTrackDidTapped()
+                }
+            }
         }
     }
 

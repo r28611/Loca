@@ -29,7 +29,7 @@ class MapViewController: UITabBarController {
         mapViewModel?.drawPolylineByTappedMarkers()
     }
     
-    private func startTrackDidTapped(_ sender: UIBarButtonItem) {
+    func startTrackDidTapped() {
         guard let viewModel = mapViewModel else { return }
         state.startTracking(viewModel: viewModel)
         set(state: TrackingStarted())
