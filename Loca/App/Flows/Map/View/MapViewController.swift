@@ -12,8 +12,13 @@ class MapViewController: UITabBarController {
     
     private var router: Router?
     private var mapViewModel: MapViewModel?
-    private var state: MapState = InitialState()
-    
+    private var currentState: (MapState, TrackState) = (.mapOpened, .saved) {
+        didSet {
+            guard let tabBar = tabBarController?.tabBar as? CustomTabBar else { return }
+            tabBar.setTabBarState(state: currentState)
+        }
+    }
+
     var mapView = GMSMapView()
     
     override func viewDidLoad() {
@@ -25,34 +30,33 @@ class MapViewController: UITabBarController {
         router = MapRouter(viewController: self)
     }
     
-    private func getRouteDidTapped() {
-        mapViewModel?.drawPolylineByTappedMarkers()
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        currentState = (.mapClosed, currentState.1)
     }
     
-    func startTrackDidTapped() {
+    func mapButtonDidTapped() {
         guard let viewModel = mapViewModel else { return }
-        state.startTracking(viewModel: viewModel)
-        set(state: TrackingStarted())
-    }
-    
-    private func stopTrackDidTapped(_ sender: UIBarButtonItem) {
-        guard let viewModel = mapViewModel else { return }
-        state.stopTracking(viewModel: viewModel)
-        set(state: TrackingFinished())
-    }
-    
-    private func saveTrackDidTapped(_ sender: UIBarButtonItem) {
-        guard let viewModel = mapViewModel else { return }
-        state.saveRoute(viewModel: viewModel)
-        set(state: InitialState())
+        
+        switch currentState.1 {
+        case .saved:
+            viewModel.startTracking()
+            set(state: .tracking)
+        case .tracking:
+            viewModel.stopTracking()
+            set(state: .stoppedTracking)
+        case .stoppedTracking:
+            viewModel.saveTrack()
+            set(state: .saved)
+        }
     }
     
     private func authDidTapped(_ sender: UIBarButtonItem) {
         router?.navigateToUserArea()
     }
     
-    private func set(state: MapState) {
-        self.state = state
+    private func set(state: TrackState) {
+        self.currentState.1 = state
     }
     
     private func showAlert() {
