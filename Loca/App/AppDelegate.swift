@@ -11,7 +11,7 @@ import GoogleMaps
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    private let locationManager = LocationManager.instance
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -23,8 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Alerts didn't allowed")
                 return
             }
+            
+            if self.locationManager.isUpdating {
             self.sendNotificatioRequest(content: self.makeNotificationContent(),
                                         trigger: self.makeIntervalNotificatioTrigger())
+            }
         }
         return true
     }
@@ -52,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func makeIntervalNotificatioTrigger() -> UNNotificationTrigger {
-        return UNTimeIntervalNotificationTrigger(timeInterval: 60,
+        return UNTimeIntervalNotificationTrigger(timeInterval: 20,
                                                  repeats: true)
     }
     
