@@ -12,8 +12,7 @@ class MapViewController: UITabBarController {
     
     private var router: Router?
     private var mapViewModel: MapViewModel?
-    private var state: MapState = InitialState()
-    
+
     var mapView = GMSMapView()
     
     override func viewDidLoad() {
@@ -25,34 +24,20 @@ class MapViewController: UITabBarController {
         router = MapRouter(viewController: self)
     }
     
-    private func getRouteDidTapped() {
-        mapViewModel?.drawPolylineByTappedMarkers()
+    func startDidTapped() {
+        mapViewModel?.startTracking()
     }
     
-    func startTrackDidTapped() {
-        guard let viewModel = mapViewModel else { return }
-        state.startTracking(viewModel: viewModel)
-        set(state: TrackingStarted())
+    func stopDidTapped() {
+        mapViewModel?.stopTracking()
     }
     
-    private func stopTrackDidTapped(_ sender: UIBarButtonItem) {
-        guard let viewModel = mapViewModel else { return }
-        state.stopTracking(viewModel: viewModel)
-        set(state: TrackingFinished())
-    }
-    
-    private func saveTrackDidTapped(_ sender: UIBarButtonItem) {
-        guard let viewModel = mapViewModel else { return }
-        state.saveRoute(viewModel: viewModel)
-        set(state: InitialState())
+    func saveDidTapped() {
+        mapViewModel?.saveTrack()
     }
     
     private func authDidTapped(_ sender: UIBarButtonItem) {
         router?.navigateToUserArea()
-    }
-    
-    private func set(state: MapState) {
-        self.state = state
     }
     
     private func showAlert() {
