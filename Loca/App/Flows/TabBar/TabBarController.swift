@@ -54,16 +54,22 @@ class TabBarController: UITabBarController {
         
         if let customTabBar = tabBar as? CustomTabBar {
             customTabBar.middleButtonHandler = { [ weak self ] in
+                
                 if self?.mapState == .mapClosed {
                     self?.selectedIndex = 1
                     self?.mapState = .mapOpened
                 } else {
+                    guard let map = self?.viewControllers?[1] as? MapViewController else { return }
+                    
                     switch self?.trackState {
                     case .tracking:
+                        map.stopDidTapped()
                         self?.trackState = .stoppedTracking
                     case .stoppedTracking:
+                        map.stopDidTapped()
                         self?.trackState = .saved
                     case .saved:
+                        map.startDidTapped()
                         self?.trackState = .tracking
                     case .none:
                         return

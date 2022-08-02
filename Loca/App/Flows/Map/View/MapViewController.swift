@@ -24,6 +24,18 @@ class MapViewController: UITabBarController {
         router = MapRouter(viewController: self)
     }
     
+    func startDidTapped() {
+        mapViewModel?.startTracking()
+    }
+    
+    func stopDidTapped() {
+        mapViewModel?.stopTracking()
+    }
+    
+    func saveDidTapped() {
+        mapViewModel?.saveTrack()
+    }
+    
     private func authDidTapped(_ sender: UIBarButtonItem) {
         router?.navigateToUserArea()
     }
