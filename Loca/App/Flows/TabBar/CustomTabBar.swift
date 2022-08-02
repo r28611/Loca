@@ -59,12 +59,12 @@ final class CustomTabBar: UITabBar {
         return pointIsInside
     }
     
-    func setTabBarState(state: (MapState, TrackState)) {
-        switch state.0 {
+    func setTabBarState(mapState: MapState, trackState: TrackState) {
+        switch mapState {
         case .mapClosed:
             middleButtonImageView.image = UIImage(systemName: "map.circle")
         case .mapOpened:
-            switch state.1 {
+            switch trackState {
             case .tracking:
                 middleButtonImageView.image = UIImage(systemName: "xmark.circle")
             case .stoppedTracking:

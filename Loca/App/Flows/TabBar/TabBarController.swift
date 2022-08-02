@@ -8,6 +8,16 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    private var mapState: MapState = .mapOpened {
+        didSet {
+            updateTabBar()
+        }
+    }
+    private var trackState: TrackState = .saved {
+        didSet {
+            updateTabBar()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +54,35 @@ class TabBarController: UITabBarController {
         
         if let customTabBar = tabBar as? CustomTabBar {
             customTabBar.middleButtonHandler = { [ weak self ] in
-                self?.selectedIndex = 1
-                
-                if let map = self?.viewControllers?[1] as? MapViewController {
-                    map.mapButtonDidTapped()
+                if self?.mapState == .mapClosed {
+                    self?.selectedIndex = 1
+                    self?.mapState = .mapOpened
+                } else {
+                    switch self?.trackState {
+                    case .tracking:
+                        self?.trackState = .stoppedTracking
+                    case .stoppedTracking:
+                        self?.trackState = .saved
+                    case .saved:
+                        self?.trackState = .tracking
+                    case .none:
+                        return
+                    }
                 }
             }
         }
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if viewControllers?[1].tabBarItem != item {
+            mapState = .mapClosed
+            updateTabBar()
+        }
+    }
+    
+    private func updateTabBar() {
+        guard let tabBar = tabBar as? CustomTabBar else { return }
+        tabBar.setTabBarState(mapState: mapState, trackState: trackState)
     }
 
 }
