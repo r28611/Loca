@@ -59,9 +59,25 @@ final class CustomTabBar: UITabBar {
         return pointIsInside
     }
     
+    func setTabBarState(mapState: MapState, trackState: TrackState) {
+        switch mapState {
+        case .mapClosed:
+            middleButtonImageView.image = UIImage(systemName: "map.circle")
+        case .mapOpened:
+            switch trackState {
+            case .tracking:
+                middleButtonImageView.image = UIImage(systemName: "xmark.circle")
+            case .stoppedTracking:
+                middleButtonImageView.image = UIImage(systemName: "arrow.down.to.line.circle")
+            case .saved:
+                middleButtonImageView.image = UIImage(systemName: "record.circle")
+            }
+        }
+    }
+    
     // MARK: - Private Methods
     
-    @objc private func didPressMiddleButton() {
+    @objc private func didPressMiddleButton(_ sender: UIButton, forEvent event: UIEvent?) {
         middleButtonHandler?()
     }
     
@@ -85,8 +101,8 @@ final class CustomTabBar: UITabBar {
         
         NSLayoutConstraint.activate([
 
-            middleButtonImageView.heightAnchor.constraint(equalToConstant: 26),
-            middleButtonImageView.widthAnchor.constraint(equalToConstant: 26),
+            middleButtonImageView.heightAnchor.constraint(equalToConstant: 36),
+            middleButtonImageView.widthAnchor.constraint(equalToConstant: 36),
 
             middleButtonImageView.centerXAnchor.constraint(equalTo: middleButton.centerXAnchor),
             middleButtonImageView.centerYAnchor.constraint(equalTo: middleButton.centerYAnchor)

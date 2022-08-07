@@ -25,13 +25,17 @@ final class LocationManager: NSObject {
         }
     }
     
+    var isUpdating: Bool = false
+    
     var locationChangedHandler: ((CLLocation?) -> Void)?
     
     func startUpdatingLocation() {
         locationManager.startUpdatingLocation()
+        isUpdating = true
     }
     func stopUpdatingLocation() {
         locationManager.stopUpdatingLocation()
+        isUpdating = false
     }
     
     private func configureLocationManager() {
