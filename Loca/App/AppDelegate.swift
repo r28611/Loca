@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("Input here your API key")
         
         let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             guard granted else {
                 print("Alerts didn't allowed")
@@ -75,3 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+    }
+}
