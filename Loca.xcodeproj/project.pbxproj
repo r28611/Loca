@@ -39,6 +39,8 @@
 		ABBC14592853677400BF0697 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC14582853677400BF0697 /* RealmManager.swift */; };
 		ABBC1460285A3B9200BF0697 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC145F285A3B9200BF0697 /* AuthViewController.swift */; };
 		ABBC146A285C8FAA00BF0697 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBC1469285C8FAA00BF0697 /* AuthView.swift */; };
+		ABCAC8F728A27DF20082BCB6 /* UserSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCAC8F628A27DF20082BCB6 /* UserSettingsTableViewController.swift */; };
+		ABCAC8F928A28A720082BCB6 /* + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCAC8F828A28A720082BCB6 /* + UIViewController.swift */; };
 		ABD35DAB287C5AB400D02F45 /* SceneBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD35DAA287C5AB400D02F45 /* SceneBlur.swift */; };
 		ABD35DAD287C7B4900D02F45 /* AuthInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD35DAC287C7B4900D02F45 /* AuthInputModel.swift */; };
 		ABD35DAF287C86CE00D02F45 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD35DAE287C86CE00D02F45 /* AuthViewModel.swift */; };
@@ -83,6 +85,8 @@
 		ABBC14582853677400BF0697 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		ABBC145F285A3B9200BF0697 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		ABBC1469285C8FAA00BF0697 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		ABCAC8F628A27DF20082BCB6 /* UserSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsTableViewController.swift; sourceTree = "<group>"; };
+		ABCAC8F828A28A720082BCB6 /* + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+ UIViewController.swift"; sourceTree = "<group>"; };
 		ABD35DAA287C5AB400D02F45 /* SceneBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneBlur.swift; sourceTree = "<group>"; };
 		ABD35DAC287C7B4900D02F45 /* AuthInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInputModel.swift; sourceTree = "<group>"; };
 		ABD35DAE287C86CE00D02F45 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				AB76601F2867763300BD7B2E /* UserAreaViewController.swift */,
+				ABCAC8F628A27DF20082BCB6 /* UserSettingsTableViewController.swift */,
 				AB76602128677BB600BD7B2E /* UserAreaCell.swift */,
 			);
 			path = UserArea;
@@ -157,6 +162,7 @@
 				ABD35DAA287C5AB400D02F45 /* SceneBlur.swift */,
 				AB85E6EB287DA4550010FEE2 /* LocationManager.swift */,
 				ABA6C802288EF8E9008DA26B /* AppColors.swift */,
+				ABCAC8F828A28A720082BCB6 /* + UIViewController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -463,10 +469,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE9C547286A62E800ADC36B /* UserAreaRouter.swift in Sources */,
+				ABCAC8F728A27DF20082BCB6 /* UserSettingsTableViewController.swift in Sources */,
 				ABA6C80F288F25E6008DA26B /* RouteCellView.swift in Sources */,
 				ABA6C80B288F2518008DA26B /* RoutesListView.swift in Sources */,
 				AB3AC32428512910003FFAAB /* ChankedArray.swift in Sources */,
 				AB85E6F0288C39FD0010FEE2 /* MapRouter.swift in Sources */,
+				ABCAC8F928A28A720082BCB6 /* + UIViewController.swift in Sources */,
 				ABA6C7FF288DDF49008DA26B /* TabBarController.swift in Sources */,
 				AB9CFFCF283E8E240036575F /* MapViewController.swift in Sources */,
 				AB85E6F4288C73930010FEE2 /* MapState.swift in Sources */,
